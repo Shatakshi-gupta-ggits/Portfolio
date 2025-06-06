@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -110,7 +109,7 @@ const Index = () => {
             {/* Enhanced Logo */}
             <div className="flex items-center group">
               <div className="relative">
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform">
                   Shatakshi Gupta
                 </h1>
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
@@ -227,20 +226,155 @@ const Index = () => {
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">About Me</h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
           </div>
-          <div className="max-w-4xl mx-auto">
-            <Card className="hover:shadow-2xl transition-all duration-500 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-0 shadow-xl hover:scale-105 transform">
+          
+          <div className="max-w-6xl mx-auto">
+            {/* Main About Card */}
+            <Card className="hover:shadow-2xl transition-all duration-500 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-0 shadow-xl hover:scale-105 transform mb-12">
               <CardContent className="p-12">
-                <div className="flex flex-col lg:flex-row items-center gap-8">
-                  <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                    <User className="h-12 w-12 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-xl leading-relaxed bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-medium">
-                      I'm currently pursuing B.Sc. in Computer Science at Gyan Ganga Institute of Technology & Sciences with a GPA of 8.33. 
-                      I specialize in building scalable web apps, AI-powered tools, and low-code enterprise apps using Oracle Apex. 
-                      I've won national-level hackathons and love building tools that solve real problems.
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <div className="flex items-center gap-4 mb-8">
+                      <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                        <User className="h-10 w-10 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Who I Am</h3>
+                        <p className="text-gray-600 dark:text-gray-300">Passionate Full-Stack Developer</p>
+                      </div>
+                    </div>
+                    <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+                      I'm currently pursuing B.Sc. in Computer Science at Gyan Ganga Institute of Technology & Sciences with a <span className="font-bold text-blue-600">GPA of 8.33</span>. 
+                      I specialize in building scalable web applications, AI-powered tools, and enterprise solutions using modern technologies.
+                    </p>
+                    <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                      With <span className="font-bold text-purple-600">3+ years of experience</span> and multiple hackathon wins, I love turning complex problems into elegant digital solutions.
                     </p>
                   </div>
+                  
+                  <div className="space-y-6">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="text-center p-6 bg-gradient-to-br from-blue-600/10 to-purple-600/10 rounded-2xl backdrop-blur-sm">
+                        <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">200+</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-300">Problems Solved</div>
+                      </div>
+                      <div className="text-center p-6 bg-gradient-to-br from-green-600/10 to-blue-600/10 rounded-2xl backdrop-blur-sm">
+                        <div className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">10+</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-300">Projects Built</div>
+                      </div>
+                      <div className="text-center p-6 bg-gradient-to-br from-yellow-600/10 to-orange-600/10 rounded-2xl backdrop-blur-sm">
+                        <div className="text-3xl font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">2</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-300">Hackathon Wins</div>
+                      </div>
+                      <div className="text-center p-6 bg-gradient-to-br from-purple-600/10 to-pink-600/10 rounded-2xl backdrop-blur-sm">
+                        <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">8+</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-300">Certifications</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Special Features Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* AI Expertise */}
+              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className="p-8 relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Sparkles className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">AI Integration Expert</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Specialized in building AI-powered applications with intelligent automation, real-time processing, and machine learning integration.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Full-Stack Mastery */}
+              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-600/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className="p-8 relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Code className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Full-Stack Mastery</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    End-to-end development expertise from React frontends to Spring Boot backends, with cloud deployment and database optimization.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Low-Code Innovation */}
+              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-pink-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className="p-8 relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <BookOpen className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Low-Code Innovation</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Oracle Apex specialist delivering enterprise solutions rapidly with advanced low-code development and custom integrations.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Problem Solving */}
+              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-600/5 to-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className="p-8 relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Trophy className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Competitive Programmer</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Strong algorithmic thinking with 200+ problems solved on LeetCode and GeeksforGeeks, excelling in data structures and algorithms.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Innovation */}
+              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-600/5 to-green-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className="p-8 relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-teal-600 to-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Star className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-teal-600 to-green-600 bg-clip-text text-transparent">Innovation Leader</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Award-winning developer with multiple hackathon victories, creating solutions that bridge technology gaps and solve real-world problems.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Continuous Learning */}
+              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className="p-8 relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Award className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Certified Professional</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Multiple industry certifications including Alibaba Cloud, Oracle, Cisco, and 8+ Salesforce Trailhead badges demonstrating commitment to excellence.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Personal Philosophy */}
+            <Card className="mt-12 hover:shadow-2xl transition-all duration-500 bg-gradient-to-r from-blue-600/10 to-purple-600/10 backdrop-blur-sm border-0 shadow-xl">
+              <CardContent className="p-12 text-center">
+                <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">My Philosophy</h3>
+                <p className="text-xl leading-relaxed text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
+                  "Technology should empower people and solve real problems. I believe in creating solutions that are not just functional, 
+                  but intuitive, scalable, and impactful. Every line of code I write is a step towards making the digital world more accessible and efficient."
+                </p>
+                <div className="flex justify-center mt-8">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300">
+                    <MessageCircle className="mr-2 h-5 w-5" />
+                    Let's Build Something Amazing
+                  </Button>
                 </div>
               </CardContent>
             </Card>
