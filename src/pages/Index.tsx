@@ -28,6 +28,16 @@ const Index = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Function to handle resume download
+  const handleResumeDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/lovable-uploads/94f9ea5e-7914-4e6a-801c-60f86f762cd3.png';
+    link.download = 'Shatakshi_Gupta_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const skills = {
     "Languages": ["Java", "JavaScript", "TypeScript", "React", "HTML", "CSS", "Tailwind", "Bootstrap"],
     "Frameworks/Tools": ["Spring Boot", "Docker", "Git/GitHub", "VSCode", "Linux"],
@@ -190,7 +200,11 @@ const Index = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg"
+                onClick={handleResumeDownload}
+              >
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
               </Button>
@@ -366,7 +380,7 @@ const Index = () => {
       </section>
 
       {/* Enhanced Achievements Section - Moved above Skills */}
-      <section className="py-24 bg-gradient-to-br from-gray-50/80 to-pink-50/40 dark:from-gray-900 dark:to-pink-900/20">
+      <section className="py-24 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Achievements</h2>
@@ -534,6 +548,25 @@ const Index = () => {
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Contact Me</h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
           </div>
+          
+          {/* Philosophy Section */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <Card className="hover:shadow-2xl transition-all duration-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl">
+              <CardContent className="p-8 text-center">
+                <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">My Philosophy</h3>
+                <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                  As an open source contributor, I believe in the power of collaborative development and knowledge sharing. 
+                  Contributing to open source projects has not only enhanced my technical skills but also taught me the 
+                  importance of building solutions that benefit the entire community.
+                </p>
+                <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                  I'm passionate about creating innovative solutions that bridge technology gaps and solve real-world problems, 
+                  while fostering an environment of continuous learning and growth.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Enhanced Contact Form */}
             <Card className="hover:shadow-2xl transition-all duration-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl">
@@ -601,7 +634,7 @@ const Index = () => {
                       </a>
                     </Button>
                     <Button variant="outline" size="sm" asChild className="border-gray-300/50 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:border-blue-600/50 transition-all duration-300 backdrop-blur-sm">
-                      <a href="https://linkedin.com/in/shatakshi1" target="_blank" rel="noopener noreferrer">
+                      <a href="https://www.linkedin.com/in/shatakshi1" target="_blank" rel="noopener noreferrer">
                         <Linkedin className="h-4 w-4 mr-2" />
                         LinkedIn
                       </a>
