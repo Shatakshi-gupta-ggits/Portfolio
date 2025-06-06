@@ -382,6 +382,28 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Enhanced Achievements Section - Moved above Skills */}
+      <section className="py-24 bg-gradient-to-br from-gray-50/80 to-pink-50/40 dark:from-gray-800/80 dark:to-pink-900/20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Achievements</h2>
+            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {achievements.map((achievement, index) => (
+              <Card key={index} className="text-center hover:shadow-2xl transition-all duration-500 hover:-translate-y-6 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
+                <div className={`absolute inset-0 bg-gradient-to-br ${achievement.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
+                <CardContent className="p-8 relative z-10">
+                  <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">{achievement.icon}</div>
+                  <h3 className="font-bold mb-3 text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{achievement.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{achievement.subtitle}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Enhanced Skills Section */}
       <section id="skills" className="py-24 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
@@ -500,28 +522,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced Achievements Section */}
-      <section className="py-24 bg-gradient-to-br from-gray-50/80 to-pink-50/40 dark:from-gray-800/80 dark:to-pink-900/20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Achievements</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {achievements.map((achievement, index) => (
-              <Card key={index} className="text-center hover:shadow-2xl transition-all duration-500 hover:-translate-y-6 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
-                <div className={`absolute inset-0 bg-gradient-to-br ${achievement.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
-                <CardContent className="p-8 relative z-10">
-                  <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">{achievement.icon}</div>
-                  <h3 className="font-bold mb-3 text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{achievement.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{achievement.subtitle}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Enhanced Certifications Section */}
       <section className="py-24 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
@@ -628,6 +628,28 @@ const Index = () => {
               </Card>
             </div>
           </div>
+          
+          {/* Personal Philosophy with Open Source Contribution */}
+          <Card className="mt-16 hover:shadow-2xl transition-all duration-500 bg-gradient-to-r from-blue-600/10 to-purple-600/10 backdrop-blur-sm border-0 shadow-xl">
+            <CardContent className="p-12 text-center">
+              <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">My Philosophy</h3>
+              <p className="text-xl leading-relaxed text-gray-700 dark:text-gray-300 max-w-4xl mx-auto mb-6">
+                "Technology should empower people and solve real problems. I believe in creating solutions that are not just functional, 
+                but intuitive, scalable, and impactful. Every line of code I write is a step towards making the digital world more accessible and efficient."
+              </p>
+              <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+                As an <span className="font-bold text-blue-600">open source contributor</span>, I'm passionate about giving back to the developer community. 
+                I believe in the power of collaborative development and sharing knowledge to build better software together. Contributing to open source 
+                projects allows me to learn from diverse perspectives while helping create tools that benefit developers worldwide.
+              </p>
+              <div className="flex justify-center mt-8">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300">
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Let's Build Something Amazing
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
