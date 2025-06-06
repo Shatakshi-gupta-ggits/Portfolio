@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -81,9 +80,9 @@ const Index = () => {
   ];
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark' : ''}`}>
+    <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gray-900' : 'bg-white'}`}>
       {/* Modern Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-lg border-b border-border/40 shadow-sm">
+      <nav className="fixed top-0 w-full z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b border-gray-200/40 dark:border-gray-700/40 shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -118,23 +117,23 @@ const Index = () => {
 
               {/* Mobile Menu Button */}
               <button
-                className="md:hidden p-2 rounded-lg hover:bg-accent transition-colors"
+                className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {mobileMenuOpen ? <X className="h-5 w-5 text-gray-700 dark:text-gray-300" /> : <Menu className="h-5 w-5 text-gray-700 dark:text-gray-300" />}
               </button>
             </div>
           </div>
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-lg">
+            <div className="md:hidden border-t border-gray-200/40 dark:border-gray-700/40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg">
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="block px-3 py-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:bg-accent rounded-md transition-colors duration-200"
+                    className="block px-3 py-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors duration-200"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -147,8 +146,8 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30" />
+      <section id="home" className="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden bg-white dark:bg-gray-900">
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-blue-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900/20" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -162,7 +161,7 @@ const Index = () => {
                 <Download className="mr-2 h-4 w-4" />
                 Download Resume
               </Button>
-              <Button variant="outline" size="lg" className="border-primary/20 hover:bg-primary/10">
+              <Button variant="outline" size="lg" className="border-blue-600/20 hover:bg-blue-600/10 dark:border-blue-400/20 dark:hover:bg-blue-400/10">
                 <MessageCircle className="mr-2 h-4 w-4" />
                 Let's Connect
               </Button>
@@ -171,13 +170,13 @@ const Index = () => {
         </div>
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-pulse delay-1000" />
+          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-400/10 dark:bg-blue-400/5 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400/10 dark:bg-purple-400/5 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-muted/20">
+      <section id="about" className="py-20 bg-gray-50/50 dark:bg-gray-800/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">About Me</h2>
@@ -205,7 +204,7 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20">
+      <section id="skills" className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Skills</h2>
@@ -233,7 +232,7 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-muted/20">
+      <section id="projects" className="py-20 bg-gray-50/50 dark:bg-gray-800/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Projects</h2>
@@ -273,7 +272,7 @@ const Index = () => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20">
+      <section id="experience" className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Experience</h2>
@@ -302,7 +301,7 @@ const Index = () => {
       </section>
 
       {/* Achievements Section */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-gray-50/50 dark:bg-gray-800/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Achievements</h2>
@@ -323,7 +322,7 @@ const Index = () => {
       </section>
 
       {/* Certifications Section */}
-      <section className="py-20">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Certifications</h2>
@@ -343,7 +342,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-muted/20">
+      <section id="contact" className="py-20 bg-gray-50/50 dark:bg-gray-800/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Contact Me</h2>
@@ -426,7 +425,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 bg-background border-t border-border">
+      <footer className="py-8 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4 text-center">
           <p className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             © 2025 Shatakshi Gupta. Built with React, TypeScript & Tailwind CSS.
