@@ -30,12 +30,7 @@ const Index = () => {
 
   // Function to handle resume download
   const handleResumeDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/lovable-uploads/94f9ea5e-7914-4e6a-801c-60f86f762cd3.png';
-    link.download = 'Shatakshi_Gupta_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.open('https://drive.google.com/file/d/1ys2FMfqnwlyX8WesXEv_J41noVyF7nvs/view?usp=sharing', '_blank');
   };
 
   const skills = {
