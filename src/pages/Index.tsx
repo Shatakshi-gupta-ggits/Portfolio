@@ -102,7 +102,7 @@ const Index = () => {
       category: "Oracle Apex",
       github: "#",
       demo: "#",
-      featured: false
+      featured: true
     }
   ];
 
