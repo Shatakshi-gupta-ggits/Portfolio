@@ -298,55 +298,75 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced About Section with Scroll Animations */}
-      <section id="about" className="py-24 bg-gradient-to-br from-gray-50/80 to-blue-50/40 dark:from-gray-900 dark:to-blue-900/20">
-        <div className="container mx-auto px-4">
+      {/* Enhanced About Section with Premium Background */}
+      <section id="about" className="py-24 relative overflow-hidden">
+        {/* Enhanced Background for About Section */}
+        <div className="absolute inset-0">
+          {/* Primary gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900" />
+          
+          {/* Animated gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-blue-600/20 to-indigo-600/20 animate-gradient" />
+          
+          {/* Floating orbs for visual interest */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-3xl animate-pulse" 
+               style={{ transform: `translateY(${scrollY * 0.08}px)` }} />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-full blur-3xl animate-pulse delay-1000" 
+               style={{ transform: `translateY(${scrollY * -0.06}px)` }} />
+          <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-gradient-to-r from-indigo-500/30 to-purple-500/30 rounded-full blur-3xl animate-pulse delay-2000" 
+               style={{ transform: `translateY(${scrollY * 0.1}px)` }} />
+          
+          {/* Subtle grid pattern overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">About Me</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
+            <h2 className="text-5xl font-bold mb-6 text-white drop-shadow-2xl">About Me</h2>
+            <div className="w-32 h-1.5 bg-gradient-to-r from-white to-purple-300 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
           </div>
           
           <div className="max-w-6xl mx-auto">
-            {/* Main About Card with Scroll Animation */}
-            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-0 shadow-xl hover:scale-105 transform mb-12 scroll-animate opacity-0 translate-y-8">
+            {/* Main About Card with Enhanced Premium Styling */}
+            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/15 dark:bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl hover:scale-105 transform mb-12 scroll-animate opacity-0 translate-y-8">
               <CardContent className="p-12">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                   <div>
                     <div className="flex items-center gap-4 mb-8">
-                      <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                      <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-2xl">
                         <User className="h-10 w-10 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Who I Am</h3>
-                        <p className="text-gray-600 dark:text-gray-300">Passionate Full-Stack Developer</p>
+                        <h3 className="text-2xl font-bold text-white drop-shadow-lg">Who I Am</h3>
+                        <p className="text-purple-200">Passionate Full-Stack Developer</p>
                       </div>
                     </div>
-                    <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
-                      I'm currently pursuing B.Sc. in Computer Science at Gyan Ganga Institute of Technology & Sciences with a <span className="font-bold text-blue-600">GPA of 8.33</span>. 
+                    <p className="text-lg leading-relaxed text-blue-100 mb-6">
+                      I'm currently pursuing B.Sc. in Computer Science at Gyan Ganga Institute of Technology & Sciences with a <span className="font-bold text-purple-300">GPA of 8.33</span>. 
                       I specialize in building scalable web applications, AI-powered tools, and enterprise solutions using modern technologies.
                     </p>
-                    <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                      With <span className="font-bold text-purple-600">3+ years of experience</span> and multiple hackathon wins, I love turning complex problems into elegant digital solutions.
+                    <p className="text-lg leading-relaxed text-blue-100">
+                      With <span className="font-bold text-purple-300">3+ years of experience</span> and multiple hackathon wins, I love turning complex problems into elegant digital solutions.
                     </p>
                   </div>
                   
                   <div className="space-y-6">
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center p-6 bg-gradient-to-br from-blue-600/10 to-purple-600/10 rounded-2xl backdrop-blur-sm">
-                        <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">200+</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-300">Problems Solved</div>
+                      <div className="text-center p-6 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/20">
+                        <div className="text-3xl font-bold text-white drop-shadow-lg">200+</div>
+                        <div className="text-sm text-purple-200">Problems Solved</div>
                       </div>
-                      <div className="text-center p-6 bg-gradient-to-br from-green-600/10 to-blue-600/10 rounded-2xl backdrop-blur-sm">
-                        <div className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">10+</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-300">Projects Built</div>
+                      <div className="text-center p-6 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/20">
+                        <div className="text-3xl font-bold text-white drop-shadow-lg">10+</div>
+                        <div className="text-sm text-purple-200">Projects Built</div>
                       </div>
-                      <div className="text-center p-6 bg-gradient-to-br from-yellow-600/10 to-orange-600/10 rounded-2xl backdrop-blur-sm">
-                        <div className="text-3xl font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">2</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-300">Hackathon Wins</div>
+                      <div className="text-center p-6 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/20">
+                        <div className="text-3xl font-bold text-white drop-shadow-lg">2</div>
+                        <div className="text-sm text-purple-200">Hackathon Wins</div>
                       </div>
-                      <div className="text-center p-6 bg-gradient-to-br from-purple-600/10 to-pink-600/10 rounded-2xl backdrop-blur-sm">
-                        <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">8+</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-300">Certifications</div>
+                      <div className="text-center p-6 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/20">
+                        <div className="text-3xl font-bold text-white drop-shadow-lg">8+</div>
+                        <div className="text-sm text-purple-200">Certifications</div>
                       </div>
                     </div>
                   </div>
@@ -354,7 +374,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            {/* Special Features Grid with Staggered Animation */}
+            {/* Special Features Grid with Enhanced Premium Styling */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 { icon: Sparkles, title: "AI Integration Expert", desc: "Specialized in building AI-powered applications with intelligent automation, real-time processing, and machine learning integration.", gradient: "from-blue-600 to-purple-600" },
@@ -364,14 +384,14 @@ const Index = () => {
                 { icon: Star, title: "Innovation Leader", desc: "Award-winning developer with multiple hackathon victories, creating solutions that bridge technology gaps and solve real-world problems.", gradient: "from-teal-600 to-green-600" },
                 { icon: Award, title: "Certified Professional", desc: "Multiple industry certifications including Alibaba Cloud, Oracle, Cisco, and 8+ Salesforce Trailhead badges demonstrating commitment to excellence.", gradient: "from-indigo-600 to-purple-600" }
               ].map((item, index) => (
-                <Card key={index} className="hover:shadow-2xl transition-all duration-700 hover:-translate-y-6 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: `${index * 150}ms` }}>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-700`} />
+                <Card key={index} className="hover:shadow-2xl transition-all duration-700 hover:-translate-y-6 group bg-white/15 dark:bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden relative scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: `${index * 150}ms` }}>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-700`} />
                   <CardContent className="p-8 relative z-10">
                     <div className={`w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
                       <item.icon className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className={`text-xl font-bold mb-4 bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>{item.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{item.desc}</p>
+                    <h3 className={`text-xl font-bold mb-4 text-white drop-shadow-lg ${item.gradient} bg-clip-text text-transparent`}>{item.title}</h3>
+                    <p className="text-blue-100 leading-relaxed">{item.desc}</p>
                   </CardContent>
                 </Card>
               ))}
