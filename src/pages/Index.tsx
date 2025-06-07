@@ -38,6 +38,17 @@ const Index = () => {
           element.classList.add('animate-in');
         }
       });
+
+      // Animate heading underlines on scroll
+      const headingUnderlines = document.querySelectorAll('.heading-underline');
+      headingUnderlines.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+        
+        if (isVisible) {
+          element.classList.add('animate-underline');
+        }
+      });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -151,9 +162,9 @@ const Index = () => {
             {/* Refined Logo */}
             <div className="flex items-center group cursor-pointer">
               <div className="relative">
-                <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl blur-lg opacity-20 group-hover:opacity-30 transition-all duration-500"></div>
-                <div className="relative bg-white/95 dark:bg-gray-900/95 rounded-xl px-5 py-2.5 border border-gray-200/30 dark:border-gray-700/30 backdrop-blur-lg shadow-md">
-                  <h1 className="text-lg font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-lg blur opacity-20 group-hover:opacity-30 transition-all duration-500"></div>
+                <div className="relative bg-white/95 dark:bg-gray-900/95 rounded-lg px-3 py-1.5 border border-gray-200/30 dark:border-gray-700/30 backdrop-blur-lg shadow-sm">
+                  <h1 className="text-sm font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
                     Shatakshi Gupta
                   </h1>
                 </div>
@@ -178,23 +189,23 @@ const Index = () => {
 
             {/* Refined Controls */}
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-3 bg-gray-100/60 dark:bg-gray-800/60 rounded-xl px-4 py-2.5 backdrop-blur-lg border border-gray-200/30 dark:border-gray-700/30 shadow-md">
-                <span className="text-lg">🌙</span>
+              <div className="flex items-center gap-2 bg-gray-100/60 dark:bg-gray-800/60 rounded-lg px-3 py-1.5 backdrop-blur-lg border border-gray-200/30 dark:border-gray-700/30 shadow-sm">
+                <span className="text-sm">🌙</span>
                 <Switch 
                   checked={darkMode} 
                   onCheckedChange={setDarkMode}
-                  className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-600 data-[state=checked]:to-purple-600"
+                  className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-600 data-[state=checked]:to-purple-600 scale-75"
                 />
-                <span className="text-lg">☀️</span>
+                <span className="text-sm">☀️</span>
               </div>
 
               <button
-                className="md:hidden p-3 rounded-xl bg-gradient-to-r from-blue-600/10 to-purple-600/10 hover:from-blue-600/20 hover:to-purple-600/20 transition-all duration-300 backdrop-blur-lg border border-gray-200/30 dark:border-gray-700/30 shadow-md"
+                className="md:hidden p-2 rounded-lg bg-gradient-to-r from-blue-600/10 to-purple-600/10 hover:from-blue-600/20 hover:to-purple-600/20 transition-all duration-300 backdrop-blur-lg border border-gray-200/30 dark:border-gray-700/30 shadow-sm"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? 
-                  <X className="h-5 w-5 text-gray-700 dark:text-gray-300" /> : 
-                  <Menu className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                  <X className="h-4 w-4 text-gray-700 dark:text-gray-300" /> : 
+                  <Menu className="h-4 w-4 text-gray-700 dark:text-gray-300" />
                 }
               </button>
             </div>
@@ -229,16 +240,16 @@ const Index = () => {
             style={{ transform: `translateY(${scrollY * -0.1}px)` }}
           >
             {/* Enhanced Floating Badge with Better Balance */}
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-full backdrop-blur-xl border border-emerald-500/20 mb-12 shadow-lg hover:shadow-emerald-500/20 transition-all duration-500 group cursor-pointer hover:scale-105">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-full backdrop-blur-xl border border-emerald-500/20 mb-12 shadow-lg hover:shadow-emerald-500/20 transition-all duration-500 group cursor-pointer hover:scale-105">
               <div className="relative">
-                <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
-                <div className="absolute inset-0 w-3 h-3 bg-emerald-500 rounded-full animate-ping opacity-60"></div>
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 w-2 h-2 bg-emerald-500 rounded-full animate-ping opacity-60"></div>
               </div>
-              <Sparkles className="h-4 w-4 text-emerald-500 group-hover:rotate-12 transition-transform duration-500" />
-              <span className="text-sm font-semibold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <Sparkles className="h-3 w-3 text-emerald-500 group-hover:rotate-12 transition-transform duration-500" />
+              <span className="text-xs font-semibold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Available for opportunities
               </span>
-              <Heart className="h-4 w-4 text-pink-500 group-hover:scale-110 transition-transform duration-300" />
+              <Heart className="h-3 w-3 text-pink-500 group-hover:scale-110 transition-transform duration-300" />
             </div>
 
             <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
@@ -292,7 +303,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">About Me</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
+            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
           </div>
           
           <div className="max-w-6xl mx-auto">
@@ -374,7 +385,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Achievements</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
+            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {achievements.map((achievement, index) => (
@@ -396,7 +407,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Skills</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
+            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Object.entries(skills).map(([category, skillList], index) => (
@@ -432,7 +443,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Featured Projects</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
+            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
@@ -485,7 +496,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Experience</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
+            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
           </div>
           <div className="max-w-4xl mx-auto">
             <Card className="hover:shadow-2xl transition-all duration-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl hover:scale-105 transform scroll-animate opacity-0 translate-y-8">
@@ -514,7 +525,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Certifications</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
+            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {certifications.map((cert, index) => (
@@ -536,7 +547,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Contact Me</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
+            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
           </div>
           
           {/* Philosophy Section with Scroll Animation */}
