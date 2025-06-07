@@ -282,9 +282,9 @@ const Index = () => {
             {/* Enhanced Stats with Scroll Animation */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
               {[
-                { number: "3+", label: "Years Experience" },
-                { number: "10+", label: "Projects Completed" },
-                { number: "5+", label: "Technologies Mastered" }
+                { number: "5+", label: "Hackathons Winner" },
+                { number: "30+", label: "Projects Completed" },
+                { number: "15+", label: "Technologies Mastered" }
               ].map((stat, index) => (
                 <div key={index} className="text-center group scroll-animate opacity-0 transform translate-y-8 transition-all duration-700" style={{ transitionDelay: `${index * 200}ms` }}>
                   <div className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-125 transition-transform duration-500">
