@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,12 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
-import { Github, Linkedin, Mail, Phone, Download, ExternalLink, Trophy, Award, Code, Briefcase, User, BookOpen, MessageCircle, Menu, X, Star, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, Download, ExternalLink, Trophy, Award, Code, Briefcase, User, BookOpen, MessageCircle, Menu, X, Star, Sparkles, Zap, Heart } from "lucide-react";
 
 const Index = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [scrollY, setScrollY] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,8 +26,16 @@ const Index = () => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // Function to handle resume download
@@ -107,49 +117,63 @@ const Index = () => {
         <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
-      {/* Enhanced Navigation with better dark mode */}
-      <nav className="fixed top-0 w-full z-50 bg-white/90 dark:bg-gray-900/95 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-700/50 shadow-xl transition-all duration-300">
+      {/* Enhanced Modern Navigation */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrollY > 50 
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl border-b border-gray-200/50 dark:border-gray-700/50' 
+          : 'bg-white/70 dark:bg-gray-900/80 backdrop-blur-sm'
+      }`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-20">
-            {/* Enhanced Logo */}
-            <div className="flex items-center group">
+            {/* Enhanced Modern Logo */}
+            <div className="flex items-center group cursor-pointer">
               <div className="relative">
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform">
-                  Shatakshi Gupta
-                </h1>
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl blur-lg opacity-30 group-hover:opacity-60 transition-all duration-500"></div>
+                <div className="relative bg-white dark:bg-gray-900 rounded-xl px-6 py-3 border border-gray-200/50 dark:border-gray-700/50">
+                  <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                    Shatakshi Gupta
+                  </h1>
+                </div>
               </div>
             </div>
 
-            {/* Enhanced Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            {/* Enhanced Modern Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-1">
               {navItems.map((item, index) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="relative group px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-blue-700 hover:to-purple-700 transition-all duration-300 font-medium"
+                  className="relative group px-6 py-3 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-white transition-all duration-300 rounded-xl overflow-hidden"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-500"></span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-xl"></div>
+                  <span className="relative z-10">{item.label}</span>
+                  <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full group-hover:left-0 transition-all duration-300"></div>
                 </a>
               ))}
             </div>
 
-            {/* Enhanced Controls */}
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-3 bg-gray-100/50 dark:bg-gray-800/50 rounded-full px-4 py-2 backdrop-blur-sm">
-                <span className="text-sm">🌙</span>
-                <Switch checked={darkMode} onCheckedChange={setDarkMode} />
-                <span className="text-sm">☀️</span>
+            {/* Enhanced Modern Controls */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 bg-gray-100/80 dark:bg-gray-800/80 rounded-full px-5 py-3 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 shadow-lg">
+                <span className="text-lg">🌙</span>
+                <Switch 
+                  checked={darkMode} 
+                  onCheckedChange={setDarkMode}
+                  className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-600 data-[state=checked]:to-purple-600"
+                />
+                <span className="text-lg">☀️</span>
               </div>
 
               <button
-                className="md:hidden p-3 rounded-xl bg-gradient-to-r from-blue-600/10 to-purple-600/10 hover:from-blue-600/20 hover:to-purple-600/20 transition-all duration-300"
+                className="md:hidden p-3 rounded-xl bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 transition-all duration-300 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                {mobileMenuOpen ? <X className="h-5 w-5 text-gray-700 dark:text-gray-300" /> : <Menu className="h-5 w-5 text-gray-700 dark:text-gray-300" />}
+                {mobileMenuOpen ? 
+                  <X className="h-5 w-5 text-gray-700 dark:text-gray-300" /> : 
+                  <Menu className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                }
               </button>
             </div>
           </div>
@@ -162,7 +186,7 @@ const Index = () => {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="block px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 rounded-xl transition-all duration-300 font-medium"
+                    className="block px-6 py-4 text-gray-700 dark:text-gray-200 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:text-blue-600 dark:hover:text-blue-400 rounded-xl transition-all duration-300 font-medium border border-transparent hover:border-blue-600/20"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -178,12 +202,18 @@ const Index = () => {
       <section id="home" className="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-gray-800 dark:via-gray-900 dark:to-black">
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="animate-fade-in">
-            {/* Floating Badge */}
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-full backdrop-blur-sm border border-blue-600/20 mb-8 animate-bounce-slow">
-              <Sparkles className="h-4 w-4 text-blue-600" />
-              <span className="text-sm font-medium bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            {/* Enhanced Modern Floating Badge */}
+            <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-full backdrop-blur-xl border border-emerald-500/30 mb-12 animate-bounce-slow shadow-2xl hover:shadow-emerald-500/25 transition-all duration-500 group cursor-pointer">
+              <div className="relative">
+                <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 w-3 h-3 bg-emerald-500 rounded-full animate-ping"></div>
+              </div>
+              <Sparkles className="h-5 w-5 text-emerald-500 group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-base font-semibold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Available for opportunities
               </span>
+              <Heart className="h-4 w-4 text-pink-500 group-hover:scale-110 transition-transform duration-300" />
+              <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse delay-500"></div>
             </div>
 
             <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
@@ -213,7 +243,7 @@ const Index = () => {
               </Button>
             </div>
 
-            {/* Stats with improved dark mode visibility */}
+            {/* Enhanced Stats with better dark mode visibility */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
               {[
                 { number: "3+", label: "Years Experience" },
@@ -224,7 +254,7 @@ const Index = () => {
                   <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300 mt-1 font-medium">{stat.label}</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-200 mt-1 font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
