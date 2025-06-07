@@ -342,11 +342,11 @@ const Index = () => {
                       </div>
                     </div>
                     <p className="text-lg leading-relaxed text-blue-100 mb-6">
-                      I'm currently pursuing B.Sc. in Computer Science at Gyan Ganga Institute of Technology & Sciences with a <span className="font-bold text-purple-300">GPA of 8.33</span>. 
+                      I'm currently pursuing B.Tech in Computer Science & Design at Gyan Ganga Institute of Technology & Sciences with a <span className="font-bold text-purple-300">GPA of 8.33</span>. 
                       I specialize in building scalable web applications, AI-powered tools, and enterprise solutions using modern technologies.
                     </p>
                     <p className="text-lg leading-relaxed text-blue-100">
-                      With <span className="font-bold text-purple-300">3+ years of experience</span> and multiple hackathon wins, I love turning complex problems into elegant digital solutions.
+                      With <span className="font-bold text-purple-300"> 1+ year of Freelance experience</span> and multiple hackathon wins, I love turning complex problems into elegant digital solutions.
                     </p>
                   </div>
                   
@@ -357,15 +357,15 @@ const Index = () => {
                         <div className="text-sm text-purple-200">Problems Solved</div>
                       </div>
                       <div className="text-center p-6 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/20">
-                        <div className="text-3xl font-bold text-white drop-shadow-lg">10+</div>
+                        <div className="text-3xl font-bold text-white drop-shadow-lg">20+</div>
                         <div className="text-sm text-purple-200">Projects Built</div>
                       </div>
                       <div className="text-center p-6 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/20">
-                        <div className="text-3xl font-bold text-white drop-shadow-lg">2</div>
+                        <div className="text-3xl font-bold text-white drop-shadow-lg">5</div>
                         <div className="text-sm text-purple-200">Hackathon Wins</div>
                       </div>
                       <div className="text-center p-6 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/20">
-                        <div className="text-3xl font-bold text-white drop-shadow-lg">8+</div>
+                        <div className="text-3xl font-bold text-white drop-shadow-lg">10+</div>
                         <div className="text-sm text-purple-200">Certifications</div>
                       </div>
                     </div>
