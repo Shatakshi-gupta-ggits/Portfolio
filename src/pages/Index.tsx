@@ -438,48 +438,110 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced Projects Section with Scroll Animation */}
-      <section id="projects" className="py-24 bg-gradient-to-br from-gray-50/80 to-purple-50/40 dark:from-gray-900 dark:to-purple-900/20">
-        <div className="container mx-auto px-4">
+      {/* Enhanced Projects Section with Premium Background for Featured Projects */}
+      <section id="projects" className="py-24 relative overflow-hidden">
+        {/* Enhanced Background for Featured Projects */}
+        <div className="absolute inset-0">
+          {/* Primary gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900" />
+          
+          {/* Animated gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 animate-gradient" />
+          
+          {/* Floating orbs for visual interest */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full blur-3xl animate-pulse" 
+               style={{ transform: `translateY(${scrollY * 0.1}px)` }} />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse delay-1000" 
+               style={{ transform: `translateY(${scrollY * -0.05}px)` }} />
+          <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-gradient-to-r from-pink-500/30 to-blue-500/30 rounded-full blur-3xl animate-pulse delay-2000" 
+               style={{ transform: `translateY(${scrollY * 0.08}px)` }} />
+          
+          {/* Subtle grid pattern overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Featured Projects</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
+            <h2 className="text-5xl font-bold mb-6 text-white drop-shadow-2xl">Featured Projects</h2>
+            <div className="w-32 h-1.5 bg-gradient-to-r from-white to-blue-300 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
+            <p className="text-xl text-blue-100 mt-6 max-w-2xl mx-auto leading-relaxed">
+              Showcasing innovative solutions that demonstrate technical excellence and creative problem-solving
+            </p>
           </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className={`hover:shadow-2xl transition-all duration-700 hover:-translate-y-8 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative scroll-animate opacity-0 translate-y-8 ${project.featured ? 'lg:col-span-1 md:col-span-1' : ''}`} style={{ transitionDelay: `${index * 200}ms` }}>
+              <Card key={index} className={`transition-all duration-700 hover:-translate-y-8 group overflow-hidden relative scroll-animate opacity-0 translate-y-8 ${
+                project.featured 
+                  ? 'bg-white/15 dark:bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl hover:shadow-blue-500/20 hover:bg-white/20' 
+                  : 'bg-white/10 dark:bg-gray-800/60 backdrop-blur-sm border border-white/10 shadow-xl hover:shadow-purple-500/20'
+              }`} style={{ transitionDelay: `${index * 200}ms` }}>
                 {project.featured && (
-                  <div className="absolute top-4 right-4 z-20">
-                    <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                      <Star className="h-3 w-3" />
-                      Featured
+                  <>
+                    {/* Enhanced featured badge */}
+                    <div className="absolute top-4 right-4 z-20">
+                      <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-2xl animate-pulse">
+                        <Star className="h-4 w-4" />
+                        Featured Project
+                        <Zap className="h-4 w-4" />
+                      </div>
                     </div>
-                  </div>
+                    
+                    {/* Glow effect for featured projects */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-700" />
+                  </>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                
                 <CardHeader className="relative z-10">
                   <div className="flex justify-between items-start mb-4">
-                    <Badge variant="outline" className="border-blue-600/30 bg-blue-600/10 text-blue-600 font-medium">{project.category}</Badge>
+                    <Badge variant="outline" className={`font-medium ${
+                      project.featured 
+                        ? 'border-white/40 bg-white/20 text-white' 
+                        : 'border-blue-600/30 bg-blue-600/10 text-blue-600'
+                    }`}>
+                      {project.category}
+                    </Badge>
                     <div className="flex gap-2">
-                      <Button variant="ghost" size="sm" className="hover:bg-blue-600/10 hover:scale-110 transition-all duration-500">
+                      <Button variant="ghost" size="sm" className={`transition-all duration-500 ${
+                        project.featured 
+                          ? 'hover:bg-white/20 text-white hover:scale-110' 
+                          : 'hover:bg-blue-600/10 hover:scale-110'
+                      }`}>
                         <Github className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="sm" className="hover:bg-purple-600/10 hover:scale-110 transition-all duration-500">
+                      <Button variant="ghost" size="sm" className={`transition-all duration-500 ${
+                        project.featured 
+                          ? 'hover:bg-white/20 text-white hover:scale-110' 
+                          : 'hover:bg-purple-600/10 hover:scale-110'
+                      }`}>
                         <ExternalLink className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
-                  <CardTitle className="text-xl group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  <CardTitle className={`text-xl transition-all ${
+                    project.featured 
+                      ? 'text-white group-hover:text-blue-200' 
+                      : 'bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'
+                  }`}>
                     {project.title}
                   </CardTitle>
-                  <CardDescription className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <CardDescription className={`leading-relaxed ${
+                    project.featured 
+                      ? 'text-blue-100' 
+                      : 'text-gray-600 dark:text-gray-300'
+                  }`}>
                     {project.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="relative z-10">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs hover:scale-110 transition-transform duration-300">
+                      <Badge key={tech} variant="secondary" className={`text-xs transition-transform duration-300 hover:scale-110 ${
+                        project.featured 
+                          ? 'bg-white/20 text-white border-white/30' 
+                          : ''
+                      }`}>
                         {tech}
                       </Badge>
                     ))}
