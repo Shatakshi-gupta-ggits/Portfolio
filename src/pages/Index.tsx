@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,7 +19,7 @@ const Index = () => {
     message: ''
   });
 
-  // Mouse tracking for interactive effects
+  // Enhanced scroll tracking for animations
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -28,10 +27,25 @@ const Index = () => {
 
     const handleScroll = () => {
       setScrollY(window.scrollY);
+      
+      // Animate elements on scroll
+      const elements = document.querySelectorAll('.scroll-animate');
+      elements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isVisible) {
+          element.classList.add('animate-in');
+        }
+      });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll);
+    
+    // Initial check for elements in view
+    handleScroll();
+    
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
@@ -110,84 +124,94 @@ const Index = () => {
 
   return (
     <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'dark' : ''}`}>
-      {/* Floating Background Elements */}
+      {/* Enhanced Floating Background Elements with Parallax */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-pink-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div 
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" 
+          style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+        />
+        <div 
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-pink-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse delay-1000" 
+          style={{ transform: `translateY(${scrollY * -0.1}px)` }}
+        />
+        <div 
+          className="absolute top-3/4 left-1/2 w-64 h-64 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse delay-2000" 
+          style={{ transform: `translateY(${scrollY * 0.15}px)` }}
+        />
       </div>
 
-      {/* Enhanced Modern Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      {/* Enhanced Modern Navigation with Scroll Effects */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-700 transform ${
         scrollY > 50 
-          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl border-b border-gray-200/50 dark:border-gray-700/50' 
-          : 'bg-white/70 dark:bg-gray-900/80 backdrop-blur-sm'
+          ? 'bg-white/80 dark:bg-gray-900/90 backdrop-blur-xl shadow-2xl border-b border-gray-200/30 dark:border-gray-700/30 translate-y-0' 
+          : 'bg-white/60 dark:bg-gray-900/70 backdrop-blur-lg translate-y-0'
       }`}>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6">
           <div className="flex justify-between items-center h-20">
-            {/* Enhanced Modern Logo */}
+            {/* Enhanced Modern Logo with Scroll Animation */}
             <div className="flex items-center group cursor-pointer">
               <div className="relative">
-                <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl blur-lg opacity-30 group-hover:opacity-60 transition-all duration-500"></div>
-                <div className="relative bg-white dark:bg-gray-900 rounded-xl px-6 py-3 border border-gray-200/50 dark:border-gray-700/50">
-                  <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                <div className="absolute -inset-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-50 transition-all duration-700 animate-pulse"></div>
+                <div className="relative bg-white/90 dark:bg-gray-900/90 rounded-2xl px-8 py-4 border border-gray-200/40 dark:border-gray-700/40 backdrop-blur-lg shadow-lg">
+                  <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500">
                     Shatakshi Gupta
                   </h1>
                 </div>
               </div>
             </div>
 
-            {/* Enhanced Modern Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
+            {/* Enhanced Modern Desktop Navigation with Hover Effects */}
+            <div className="hidden md:flex items-center space-x-2">
               {navItems.map((item, index) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="relative group px-6 py-3 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-white transition-all duration-300 rounded-xl overflow-hidden"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="relative group px-6 py-3 text-sm font-medium text-gray-700 dark:text-gray-200 transition-all duration-500 rounded-xl overflow-hidden"
+                  style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-xl"></div>
-                  <span className="relative z-10">{item.label}</span>
-                  <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full group-hover:left-0 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-purple-600/80 opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-xl scale-95 group-hover:scale-100"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-70 transition-all duration-500 rounded-xl"></div>
+                  <span className="relative z-10 group-hover:text-white transition-colors duration-300">{item.label}</span>
+                  <div className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-4/5 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-500 rounded-full"></div>
                 </a>
               ))}
             </div>
 
-            {/* Enhanced Modern Controls */}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-3 bg-gray-100/80 dark:bg-gray-800/80 rounded-full px-5 py-3 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 shadow-lg">
-                <span className="text-lg">🌙</span>
+            {/* Enhanced Modern Controls with Scroll Effects */}
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4 bg-gray-100/70 dark:bg-gray-800/70 rounded-2xl px-6 py-4 backdrop-blur-xl border border-gray-200/40 dark:border-gray-700/40 shadow-xl hover:shadow-2xl transition-all duration-500">
+                <span className="text-2xl">🌙</span>
                 <Switch 
                   checked={darkMode} 
                   onCheckedChange={setDarkMode}
-                  className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-600 data-[state=checked]:to-purple-600"
+                  className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-600 data-[state=checked]:to-purple-600 scale-110"
                 />
-                <span className="text-lg">☀️</span>
+                <span className="text-2xl">☀️</span>
               </div>
 
               <button
-                className="md:hidden p-3 rounded-xl bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 transition-all duration-300 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50"
+                className="md:hidden p-4 rounded-2xl bg-gradient-to-r from-blue-600/10 to-purple-600/10 hover:from-blue-600/20 hover:to-purple-600/20 transition-all duration-500 backdrop-blur-lg border border-gray-200/40 dark:border-gray-700/40 shadow-lg hover:shadow-xl hover:scale-110"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? 
-                  <X className="h-5 w-5 text-gray-700 dark:text-gray-300" /> : 
-                  <Menu className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                  <X className="h-6 w-6 text-gray-700 dark:text-gray-300" /> : 
+                  <Menu className="h-6 w-6 text-gray-700 dark:text-gray-300" />
                 }
               </button>
             </div>
           </div>
 
-          {/* Enhanced Mobile Navigation */}
+          {/* Enhanced Mobile Navigation with Slide Animation */}
           {mobileMenuOpen && (
-            <div className="md:hidden border-t border-gray-200/50 dark:border-gray-700/50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl">
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                {navItems.map((item) => (
+            <div className="md:hidden border-t border-gray-200/30 dark:border-gray-700/30 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl animate-slide-in-right">
+              <div className="px-4 pt-4 pb-6 space-y-2">
+                {navItems.map((item, index) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="block px-6 py-4 text-gray-700 dark:text-gray-200 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:text-blue-600 dark:hover:text-blue-400 rounded-xl transition-all duration-300 font-medium border border-transparent hover:border-blue-600/20"
+                    className="block px-6 py-4 text-gray-700 dark:text-gray-200 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:text-blue-600 dark:hover:text-blue-400 rounded-2xl transition-all duration-500 font-medium border border-transparent hover:border-blue-600/20 hover:shadow-lg hover:scale-105"
                     onClick={() => setMobileMenuOpen(false)}
+                    style={{ animationDelay: `${index * 100}ms` }}
                   >
                     {item.label}
                   </a>
@@ -198,22 +222,25 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Enhanced Hero Section */}
-      <section id="home" className="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-gray-800 dark:via-gray-900 dark:to-black">
+      {/* Enhanced Hero Section with Parallax Effects */}
+      <section id="home" className="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-white via-blue-50/20 to-purple-50/20 dark:from-gray-900 dark:via-gray-800 dark:to-black">
         <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="animate-fade-in">
-            {/* Enhanced Modern Floating Badge */}
-            <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-full backdrop-blur-xl border border-emerald-500/30 mb-12 animate-bounce-slow shadow-2xl hover:shadow-emerald-500/25 transition-all duration-500 group cursor-pointer">
+          <div 
+            className="scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000"
+            style={{ transform: `translateY(${scrollY * -0.1}px)` }}
+          >
+            {/* Enhanced Modern Floating Badge with Advanced Animation */}
+            <div className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-emerald-500/5 via-blue-500/5 to-purple-500/5 rounded-full backdrop-blur-2xl border border-emerald-500/20 mb-16 shadow-2xl hover:shadow-emerald-500/20 transition-all duration-700 group cursor-pointer hover:scale-105">
               <div className="relative">
-                <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
-                <div className="absolute inset-0 w-3 h-3 bg-emerald-500 rounded-full animate-ping"></div>
+                <div className="w-4 h-4 bg-emerald-500 rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 w-4 h-4 bg-emerald-500 rounded-full animate-ping opacity-60"></div>
               </div>
-              <Sparkles className="h-5 w-5 text-emerald-500 group-hover:rotate-12 transition-transform duration-300" />
-              <span className="text-base font-semibold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <Sparkles className="h-6 w-6 text-emerald-500 group-hover:rotate-45 transition-transform duration-700" />
+              <span className="text-lg font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Available for opportunities
               </span>
-              <Heart className="h-4 w-4 text-pink-500 group-hover:scale-110 transition-transform duration-300" />
-              <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse delay-500"></div>
+              <Heart className="h-5 w-5 text-pink-500 group-hover:scale-125 transition-transform duration-500" />
+              <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse delay-700"></div>
             </div>
 
             <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
@@ -227,34 +254,34 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl hover:shadow-blue-500/25 transform hover:scale-110 transition-all duration-500 px-10 py-5 text-lg rounded-2xl"
                 onClick={handleResumeDownload}
               >
-                <Download className="mr-2 h-5 w-5" />
+                <Download className="mr-3 h-6 w-6" />
                 Download Resume
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-2 border-blue-600/30 text-gray-900 dark:text-white hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:border-blue-600/50 hover:text-blue-600 dark:hover:text-blue-400 transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg backdrop-blur-sm"
+                className="border-2 border-blue-600/30 text-gray-900 dark:text-white hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:border-blue-600/50 hover:text-blue-600 dark:hover:text-blue-400 transform hover:scale-110 transition-all duration-500 px-10 py-5 text-lg backdrop-blur-sm rounded-2xl"
               >
-                <MessageCircle className="mr-2 h-5 w-5" />
+                <MessageCircle className="mr-3 h-6 w-6" />
                 Let's Connect
               </Button>
             </div>
 
-            {/* Enhanced Stats with better dark mode visibility */}
+            {/* Enhanced Stats with Scroll Animation */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
               {[
                 { number: "3+", label: "Years Experience" },
                 { number: "10+", label: "Projects Completed" },
                 { number: "5+", label: "Technologies Mastered" }
               ].map((stat, index) => (
-                <div key={index} className="text-center group">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+                <div key={index} className="text-center group scroll-animate opacity-0 transform translate-y-8 transition-all duration-700" style={{ transitionDelay: `${index * 200}ms` }}>
+                  <div className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-125 transition-transform duration-500">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-gray-700 dark:text-gray-200 mt-1 font-medium">{stat.label}</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-200 mt-2 font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -262,17 +289,17 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced About Section */}
+      {/* Enhanced About Section with Scroll Animations */}
       <section id="about" className="py-24 bg-gradient-to-br from-gray-50/80 to-blue-50/40 dark:from-gray-900 dark:to-blue-900/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">About Me</h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
           </div>
           
           <div className="max-w-6xl mx-auto">
-            {/* Main About Card */}
-            <Card className="hover:shadow-2xl transition-all duration-500 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-0 shadow-xl hover:scale-105 transform mb-12">
+            {/* Main About Card with Scroll Animation */}
+            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-0 shadow-xl hover:scale-105 transform mb-12 scroll-animate opacity-0 translate-y-8">
               <CardContent className="p-12">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                   <div>
@@ -318,109 +345,45 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            {/* Special Features Grid */}
+            {/* Special Features Grid with Staggered Animation */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* AI Expertise */}
-              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <CardContent className="p-8 relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Sparkles className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">AI Integration Expert</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Specialized in building AI-powered applications with intelligent automation, real-time processing, and machine learning integration.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Full-Stack Mastery */}
-              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-600/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <CardContent className="p-8 relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Code className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Full-Stack Mastery</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    End-to-end development expertise from React frontends to Spring Boot backends, with cloud deployment and database optimization.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Low-Code Innovation */}
-              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-pink-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <CardContent className="p-8 relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <BookOpen className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Low-Code Innovation</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Oracle Apex specialist delivering enterprise solutions rapidly with advanced low-code development and custom integrations.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Problem Solving */}
-              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-600/5 to-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <CardContent className="p-8 relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Trophy className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Competitive Programmer</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Strong algorithmic thinking with 200+ problems solved on LeetCode and GeeksforGeeks, excelling in data structures and algorithms.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Innovation */}
-              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-600/5 to-green-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <CardContent className="p-8 relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-teal-600 to-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Star className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-teal-600 to-green-600 bg-clip-text text-transparent">Innovation Leader</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Award-winning developer with multiple hackathon victories, creating solutions that bridge technology gaps and solve real-world problems.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Continuous Learning */}
-              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <CardContent className="p-8 relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Award className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Certified Professional</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Multiple industry certifications including Alibaba Cloud, Oracle, Cisco, and 8+ Salesforce Trailhead badges demonstrating commitment to excellence.
-                  </p>
-                </CardContent>
-              </Card>
+              {[
+                { icon: Sparkles, title: "AI Integration Expert", desc: "Specialized in building AI-powered applications with intelligent automation, real-time processing, and machine learning integration.", gradient: "from-blue-600 to-purple-600" },
+                { icon: Code, title: "Full-Stack Mastery", desc: "End-to-end development expertise from React frontends to Spring Boot backends, with cloud deployment and database optimization.", gradient: "from-green-600 to-blue-600" },
+                { icon: BookOpen, title: "Low-Code Innovation", desc: "Oracle Apex specialist delivering enterprise solutions rapidly with advanced low-code development and custom integrations.", gradient: "from-purple-600 to-pink-600" },
+                { icon: Trophy, title: "Competitive Programmer", desc: "Strong algorithmic thinking with 200+ problems solved on LeetCode and GeeksforGeeks, excelling in data structures and algorithms.", gradient: "from-orange-600 to-red-600" },
+                { icon: Star, title: "Innovation Leader", desc: "Award-winning developer with multiple hackathon victories, creating solutions that bridge technology gaps and solve real-world problems.", gradient: "from-teal-600 to-green-600" },
+                { icon: Award, title: "Certified Professional", desc: "Multiple industry certifications including Alibaba Cloud, Oracle, Cisco, and 8+ Salesforce Trailhead badges demonstrating commitment to excellence.", gradient: "from-indigo-600 to-purple-600" }
+              ].map((item, index) => (
+                <Card key={index} className="hover:shadow-2xl transition-all duration-700 hover:-translate-y-6 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: `${index * 150}ms` }}>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-700`} />
+                  <CardContent className="p-8 relative z-10">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                      <item.icon className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className={`text-xl font-bold mb-4 bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>{item.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{item.desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Enhanced Achievements Section - Moved above Skills */}
+      {/* Enhanced Achievements Section with Scroll Animation */}
       <section className="py-24 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Achievements</h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {achievements.map((achievement, index) => (
-              <Card key={index} className="text-center hover:shadow-2xl transition-all duration-500 hover:-translate-y-6 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
-                <div className={`absolute inset-0 bg-gradient-to-br ${achievement.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
+              <Card key={index} className="text-center hover:shadow-2xl transition-all duration-700 hover:-translate-y-8 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: `${index * 100}ms` }}>
+                <div className={`absolute inset-0 bg-gradient-to-br ${achievement.color} opacity-5 group-hover:opacity-10 transition-opacity duration-700`} />
                 <CardContent className="p-8 relative z-10">
-                  <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">{achievement.icon}</div>
+                  <div className="text-6xl mb-6 group-hover:scale-125 transition-transform duration-500">{achievement.icon}</div>
                   <h3 className="font-bold mb-3 text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{achievement.title}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">{achievement.subtitle}</p>
                 </CardContent>
@@ -430,19 +393,19 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced Skills Section */}
+      {/* Enhanced Skills Section with Scroll Animation */}
       <section id="skills" className="py-24 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Skills</h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Object.entries(skills).map(([category, skillList], index) => (
-              <Card key={category} className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Card key={category} className="hover:shadow-2xl transition-all duration-700 hover:-translate-y-6 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: `${index * 150}ms` }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <CardHeader className="relative z-10">
-                  <CardTitle className="text-2xl text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                  <CardTitle className="text-2xl text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500">
                     {category}
                   </CardTitle>
                 </CardHeader>
@@ -452,7 +415,7 @@ const Index = () => {
                       <Badge 
                         key={skill} 
                         variant="secondary" 
-                        className="hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white transition-all duration-300 transform hover:scale-110 cursor-pointer shadow-md"
+                        className="hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white transition-all duration-500 transform hover:scale-110 cursor-pointer shadow-md"
                         style={{ animationDelay: `${skillIndex * 100}ms` }}
                       >
                         {skill}
@@ -466,16 +429,16 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced Projects Section */}
+      {/* Enhanced Projects Section with Scroll Animation */}
       <section id="projects" className="py-24 bg-gradient-to-br from-gray-50/80 to-purple-50/40 dark:from-gray-900 dark:to-purple-900/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Featured Projects</h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className={`hover:shadow-2xl transition-all duration-500 hover:-translate-y-6 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative ${project.featured ? 'lg:col-span-1 md:col-span-1' : ''}`}>
+              <Card key={index} className={`hover:shadow-2xl transition-all duration-700 hover:-translate-y-8 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative scroll-animate opacity-0 translate-y-8 ${project.featured ? 'lg:col-span-1 md:col-span-1' : ''}`} style={{ transitionDelay: `${index * 200}ms` }}>
                 {project.featured && (
                   <div className="absolute top-4 right-4 z-20">
                     <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
@@ -484,15 +447,15 @@ const Index = () => {
                     </div>
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <CardHeader className="relative z-10">
                   <div className="flex justify-between items-start mb-4">
                     <Badge variant="outline" className="border-blue-600/30 bg-blue-600/10 text-blue-600 font-medium">{project.category}</Badge>
                     <div className="flex gap-2">
-                      <Button variant="ghost" size="sm" className="hover:bg-blue-600/10 hover:scale-110 transition-all duration-300">
+                      <Button variant="ghost" size="sm" className="hover:bg-blue-600/10 hover:scale-110 transition-all duration-500">
                         <Github className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="sm" className="hover:bg-purple-600/10 hover:scale-110 transition-all duration-300">
+                      <Button variant="ghost" size="sm" className="hover:bg-purple-600/10 hover:scale-110 transition-all duration-500">
                         <ExternalLink className="h-4 w-4" />
                       </Button>
                     </div>
@@ -507,7 +470,7 @@ const Index = () => {
                 <CardContent className="relative z-10">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs hover:scale-105 transition-transform duration-200">
+                      <Badge key={tech} variant="secondary" className="text-xs hover:scale-110 transition-transform duration-300">
                         {tech}
                       </Badge>
                     ))}
@@ -519,15 +482,15 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced Experience Section */}
+      {/* Enhanced Experience Section with Scroll Animation */}
       <section id="experience" className="py-24 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Experience</h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
           </div>
           <div className="max-w-4xl mx-auto">
-            <Card className="hover:shadow-2xl transition-all duration-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl hover:scale-105 transform">
+            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl hover:scale-105 transform scroll-animate opacity-0 translate-y-8">
               <CardContent className="p-12">
                 <div className="flex flex-col lg:flex-row items-center gap-8">
                   <div className="w-24 h-24 bg-gradient-to-br from-green-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-2xl">
@@ -548,18 +511,18 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced Certifications Section */}
+      {/* Enhanced Certifications Section with Scroll Animation */}
       <section className="py-24 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Certifications</h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {certifications.map((cert, index) => (
-              <Card key={index} className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl">
+              <Card key={index} className="hover:shadow-2xl transition-all duration-700 hover:-translate-y-6 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: `${index * 150}ms` }}>
                 <CardContent className="p-8 text-center">
-                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-125 transition-transform duration-500">
                     <Award className="h-8 w-8 text-white" />
                   </div>
                   <p className="font-medium text-gray-700 dark:text-gray-300 leading-relaxed">{cert}</p>
@@ -570,17 +533,17 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced Contact Section */}
+      {/* Enhanced Contact Section with Scroll Animation */}
       <section id="contact" className="py-24 bg-gradient-to-br from-gray-50/80 to-blue-50/40 dark:from-gray-900 dark:to-blue-900/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Contact Me</h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
           </div>
           
-          {/* Philosophy Section */}
+          {/* Philosophy Section with Scroll Animation */}
           <div className="max-w-4xl mx-auto mb-16">
-            <Card className="hover:shadow-2xl transition-all duration-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl">
+            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl scroll-animate opacity-0 translate-y-8">
               <CardContent className="p-8 text-center">
                 <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">My Philosophy</h3>
                 <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
@@ -597,8 +560,8 @@ const Index = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Enhanced Contact Form */}
-            <Card className="hover:shadow-2xl transition-all duration-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl">
+            {/* Enhanced Contact Form with Scroll Animation */}
+            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl scroll-animate opacity-0 translate-y-8">
               <CardHeader>
                 <CardTitle className="text-2xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Send me a message</CardTitle>
               </CardHeader>
@@ -608,37 +571,37 @@ const Index = () => {
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="bg-white/50 dark:bg-gray-800/50 border-gray-300/50 dark:border-gray-600/50 backdrop-blur-sm focus:border-blue-500 transition-all duration-300"
+                    className="bg-white/50 dark:bg-gray-800/50 border-gray-300/50 dark:border-gray-600/50 backdrop-blur-sm focus:border-blue-500 transition-all duration-500"
                   />
                   <Input
                     type="email"
                     placeholder="Your Email"
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="bg-white/50 dark:bg-gray-800/50 border-gray-300/50 dark:border-gray-600/50 backdrop-blur-sm focus:border-blue-500 transition-all duration-300"
+                    className="bg-white/50 dark:bg-gray-800/50 border-gray-300/50 dark:border-gray-600/50 backdrop-blur-sm focus:border-blue-500 transition-all duration-500"
                   />
                   <Textarea
                     placeholder="Your Message"
                     rows={6}
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="bg-white/50 dark:bg-gray-800/50 border-gray-300/50 dark:border-gray-600/50 backdrop-blur-sm focus:border-blue-500 transition-all duration-300"
+                    className="bg-white/50 dark:bg-gray-800/50 border-gray-300/50 dark:border-gray-600/50 backdrop-blur-sm focus:border-blue-500 transition-all duration-500"
                   />
-                  <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 py-3">
+                  <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-500 py-3">
                     Send Message
                   </Button>
                 </form>
               </CardContent>
             </Card>
 
-            {/* Enhanced Contact Info */}
+            {/* Enhanced Contact Info with Scroll Animation */}
             <div className="space-y-8">
-              <Card className="hover:shadow-2xl transition-all duration-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl">
+              <Card className="hover:shadow-2xl transition-all duration-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: '200ms' }}>
                 <CardContent className="p-8">
                   <h3 className="font-bold text-2xl mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Get in touch</h3>
                   <div className="space-y-6">
                     <div className="flex items-center gap-4 group">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-125 transition-transform duration-500">
                         <Mail className="h-5 w-5 text-white" />
                       </div>
                       <a href="mailto:shatakshig2005@gmail.com" className="hover:text-blue-600 transition-colors text-gray-700 dark:text-gray-300 font-medium">
@@ -646,7 +609,7 @@ const Index = () => {
                       </a>
                     </div>
                     <div className="flex items-center gap-4 group">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-125 transition-transform duration-500">
                         <Phone className="h-5 w-5 text-white" />
                       </div>
                       <a href="tel:+919981599184" className="hover:text-green-600 transition-colors text-gray-700 dark:text-gray-300 font-medium">
@@ -656,13 +619,13 @@ const Index = () => {
                   </div>
                   <Separator className="my-8" />
                   <div className="flex gap-4">
-                    <Button variant="outline" size="sm" asChild className="border-gray-300/50 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:border-blue-600/50 transition-all duration-300 backdrop-blur-sm">
+                    <Button variant="outline" size="sm" asChild className="border-gray-300/50 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:border-blue-600/50 transition-all duration-500 backdrop-blur-sm hover:scale-110">
                       <a href="https://github.com/Shatakshi-gupta-ggits" target="_blank" rel="noopener noreferrer">
                         <Github className="h-4 w-4 mr-2" />
                         GitHub
                       </a>
                     </Button>
-                    <Button variant="outline" size="sm" asChild className="border-gray-300/50 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:border-blue-600/50 transition-all duration-300 backdrop-blur-sm">
+                    <Button variant="outline" size="sm" asChild className="border-gray-300/50 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:border-blue-600/50 transition-all duration-500 backdrop-blur-sm hover:scale-110">
                       <a href="https://www.linkedin.com/in/shatakshi1" target="_blank" rel="noopener noreferrer">
                         <Linkedin className="h-4 w-4 mr-2" />
                         LinkedIn
@@ -676,9 +639,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced Footer */}
+      {/* Enhanced Footer with Scroll Animation */}
       <footer className="py-12 bg-white dark:bg-gray-900 border-t border-gray-200/50 dark:border-gray-700/50">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 text-center scroll-animate opacity-0 transform translate-y-8 transition-all duration-1000">
           <p className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-medium text-lg">
             © 2025 Shatakshi Gupta. Built with React, TypeScript & Tailwind CSS.
           </p>

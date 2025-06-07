@@ -96,7 +96,7 @@
   }
 }
 
-/* Enhanced Custom animations */
+/* Enhanced Custom animations with scroll effects */
 @layer utilities {
   .animate-fade-in {
     animation: fadeIn 1.2s ease-out;
@@ -121,6 +121,87 @@
   .animate-glow {
     animation: glow 2s ease-in-out infinite alternate;
   }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out;
+  }
+
+  /* Scroll-triggered animations */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scroll-animate.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Parallax scroll effects */
+  .parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /* Smooth scroll behavior */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  /* Intersection observer animation classes */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .fade-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Staggered animation delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
 }
 
 @keyframes fadeIn {
@@ -142,6 +223,17 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -216,6 +308,29 @@ html {
   transition: transform 0.3s ease;
 }
 
+/* Scroll-based parallax transforms */
+.parallax-slow {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.parallax-medium {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.parallax-fast {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Performance optimizations for scroll animations */
+.scroll-element {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
 /* Particle effects */
 .particle {
   position: absolute;
@@ -264,4 +379,20 @@ html {
 .focus-visible:focus-visible {
   outline: 2px solid rgb(99, 102, 241);
   outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate,
+  .parallax-slow,
+  .parallax-medium,
+  .parallax-fast {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
 }
