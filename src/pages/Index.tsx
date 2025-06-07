@@ -175,7 +175,7 @@ const Index = () => {
       </nav>
 
       {/* Enhanced Hero Section */}
-      <section id="home" className="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20">
+      <section id="home" className="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-gray-800 dark:via-gray-900 dark:to-black">
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="animate-fade-in">
             {/* Floating Badge */}
