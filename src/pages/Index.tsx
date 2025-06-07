@@ -239,20 +239,20 @@ const Index = () => {
             className="scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000"
             style={{ transform: `translateY(${scrollY * -0.1}px)` }}
           >
-            {/* Enhanced Floating Badge with Better Balance */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-full backdrop-blur-xl border border-emerald-500/20 mb-12 shadow-lg hover:shadow-emerald-500/20 transition-all duration-500 group cursor-pointer hover:scale-105">
+            {/* Enhanced Floating Badge with Larger Size */}
+            <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-full backdrop-blur-xl border border-emerald-500/20 mb-12 shadow-lg hover:shadow-emerald-500/20 transition-all duration-500 group cursor-pointer hover:scale-105">
               <div className="relative">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                <div className="absolute inset-0 w-2 h-2 bg-emerald-500 rounded-full animate-ping opacity-60"></div>
+                <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 w-3 h-3 bg-emerald-500 rounded-full animate-ping opacity-60"></div>
               </div>
-              <Sparkles className="h-3 w-3 text-emerald-500 group-hover:rotate-12 transition-transform duration-500" />
-              <span className="text-xs font-semibold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <Sparkles className="h-5 w-5 text-emerald-500 group-hover:rotate-12 transition-transform duration-500" />
+              <span className="text-base font-semibold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Available for opportunities
               </span>
-              <Heart className="h-3 w-3 text-pink-500 group-hover:scale-110 transition-transform duration-300" />
+              <Heart className="h-5 w-5 text-pink-500 group-hover:scale-110 transition-transform duration-300" />
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
+            <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient">
               Hi, I'm Shatakshi
             </h1>
             
