@@ -604,25 +604,48 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced Contact Section with Scroll Animation */}
-      <section id="contact" className="py-24 bg-gradient-to-br from-gray-50/80 to-blue-50/40 dark:from-gray-900 dark:to-blue-900/20">
-        <div className="container mx-auto px-4">
+      {/* Enhanced Contact Section with Premium Background */}
+      <section id="contact" className="py-24 relative overflow-hidden">
+        {/* Enhanced Background for Contact Section */}
+        <div className="absolute inset-0">
+          {/* Primary gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900" />
+          
+          {/* Animated gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/15 via-purple-600/15 to-pink-600/15 animate-gradient" />
+          
+          {/* Floating orbs for visual interest */}
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-green-500/25 to-blue-500/25 rounded-full blur-3xl animate-pulse" 
+               style={{ transform: `translateY(${scrollY * 0.12}px)` }} />
+          <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/25 to-pink-500/25 rounded-full blur-3xl animate-pulse delay-1500" 
+               style={{ transform: `translateY(${scrollY * -0.08}px)` }} />
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-blue-500/25 to-green-500/25 rounded-full blur-3xl animate-pulse delay-3000" 
+               style={{ transform: `translateY(${scrollY * 0.1}px)` }} />
+          
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)] bg-[size:40px_40px]" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Contact Me</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
+            <h2 className="text-5xl font-bold mb-6 text-white drop-shadow-2xl">Contact Me</h2>
+            <div className="w-32 h-1.5 bg-gradient-to-r from-white to-green-300 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
+            <p className="text-xl text-blue-100 mt-6 max-w-2xl mx-auto leading-relaxed">
+              Let's connect and create something amazing together
+            </p>
           </div>
           
-          {/* Philosophy Section with Scroll Animation */}
+          {/* Philosophy Section with Enhanced Styling */}
           <div className="max-w-4xl mx-auto mb-16">
-            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl scroll-animate opacity-0 translate-y-8">
+            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/15 dark:bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl scroll-animate opacity-0 translate-y-8">
               <CardContent className="p-8 text-center">
-                <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">My Philosophy</h3>
-                <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                <h3 className="text-2xl font-bold mb-6 text-white drop-shadow-lg">My Philosophy</h3>
+                <p className="text-lg leading-relaxed text-blue-100 mb-4">
                   As an open source contributor, I believe in the power of collaborative development and knowledge sharing. 
                   Contributing to open source projects has not only enhanced my technical skills but also taught me the 
                   importance of building solutions that benefit the entire community.
                 </p>
-                <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                <p className="text-lg leading-relaxed text-blue-100">
                   I'm passionate about creating innovative solutions that bridge technology gaps and solve real-world problems, 
                   while fostering an environment of continuous learning and growth.
                 </p>
@@ -631,10 +654,10 @@ const Index = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Enhanced Contact Form with Scroll Animation */}
-            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl scroll-animate opacity-0 translate-y-8">
+            {/* Enhanced Contact Form */}
+            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/15 dark:bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl scroll-animate opacity-0 translate-y-8">
               <CardHeader>
-                <CardTitle className="text-2xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Send me a message</CardTitle>
+                <CardTitle className="text-2xl text-white drop-shadow-lg">Send me a message</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleFormSubmit} className="space-y-6">
@@ -642,61 +665,61 @@ const Index = () => {
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="bg-white/50 dark:bg-gray-800/50 border-gray-300/50 dark:border-gray-600/50 backdrop-blur-sm focus:border-blue-500 transition-all duration-500"
+                    className="bg-white/20 dark:bg-white/10 border-white/30 text-white placeholder:text-blue-200 backdrop-blur-sm focus:border-green-400 transition-all duration-500"
                   />
                   <Input
                     type="email"
                     placeholder="Your Email"
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="bg-white/50 dark:bg-gray-800/50 border-gray-300/50 dark:border-gray-600/50 backdrop-blur-sm focus:border-blue-500 transition-all duration-500"
+                    className="bg-white/20 dark:bg-white/10 border-white/30 text-white placeholder:text-blue-200 backdrop-blur-sm focus:border-green-400 transition-all duration-500"
                   />
                   <Textarea
                     placeholder="Your Message"
                     rows={6}
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="bg-white/50 dark:bg-gray-800/50 border-gray-300/50 dark:border-gray-600/50 backdrop-blur-sm focus:border-blue-500 transition-all duration-500"
+                    className="bg-white/20 dark:bg-white/10 border-white/30 text-white placeholder:text-blue-200 backdrop-blur-sm focus:border-green-400 transition-all duration-500"
                   />
-                  <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-500 py-3">
+                  <Button type="submit" className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white shadow-lg hover:shadow-green-500/25 transform hover:scale-105 transition-all duration-500 py-3">
                     Send Message
                   </Button>
                 </form>
               </CardContent>
             </Card>
 
-            {/* Enhanced Contact Info with Scroll Animation */}
+            {/* Enhanced Contact Info */}
             <div className="space-y-8">
-              <Card className="hover:shadow-2xl transition-all duration-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: '200ms' }}>
+              <Card className="hover:shadow-2xl transition-all duration-700 bg-white/15 dark:bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: '200ms' }}>
                 <CardContent className="p-8">
-                  <h3 className="font-bold text-2xl mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Get in touch</h3>
+                  <h3 className="font-bold text-2xl mb-8 text-white drop-shadow-lg">Get in touch</h3>
                   <div className="space-y-6">
                     <div className="flex items-center gap-4 group">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-125 transition-transform duration-500">
+                      <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-125 transition-transform duration-500">
                         <Mail className="h-5 w-5 text-white" />
                       </div>
-                      <a href="mailto:shatakshig2005@gmail.com" className="hover:text-blue-600 transition-colors text-gray-700 dark:text-gray-300 font-medium">
+                      <a href="mailto:shatakshig2005@gmail.com" className="hover:text-green-400 transition-colors text-blue-100 font-medium">
                         shatakshig2005@gmail.com
                       </a>
                     </div>
                     <div className="flex items-center gap-4 group">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-125 transition-transform duration-500">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-125 transition-transform duration-500">
                         <Phone className="h-5 w-5 text-white" />
                       </div>
-                      <a href="tel:+919981599184" className="hover:text-green-600 transition-colors text-gray-700 dark:text-gray-300 font-medium">
+                      <a href="tel:+919981599184" className="hover:text-blue-400 transition-colors text-blue-100 font-medium">
                         +91 9981599184
                       </a>
                     </div>
                   </div>
-                  <Separator className="my-8" />
+                  <Separator className="my-8 bg-white/20" />
                   <div className="flex gap-4">
-                    <Button variant="outline" size="sm" asChild className="border-gray-300/50 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:border-blue-600/50 transition-all duration-500 backdrop-blur-sm hover:scale-110">
+                    <Button variant="outline" size="sm" asChild className="border-white/40 bg-white/20 text-white hover:bg-white/30 hover:border-white/60 transition-all duration-500 backdrop-blur-sm hover:scale-110">
                       <a href="https://github.com/Shatakshi-gupta-ggits" target="_blank" rel="noopener noreferrer">
                         <Github className="h-4 w-4 mr-2" />
                         GitHub
                       </a>
                     </Button>
-                    <Button variant="outline" size="sm" asChild className="border-gray-300/50 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:border-blue-600/50 transition-all duration-500 backdrop-blur-sm hover:scale-110">
+                    <Button variant="outline" size="sm" asChild className="border-white/40 bg-white/20 text-white hover:bg-white/30 hover:border-white/60 transition-all duration-500 backdrop-blur-sm hover:scale-110">
                       <a href="https://www.linkedin.com/in/shatakshi1" target="_blank" rel="noopener noreferrer">
                         <Linkedin className="h-4 w-4 mr-2" />
                         LinkedIn
@@ -710,16 +733,16 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced Footer with Scroll Animation */}
-      <footer className="py-12 bg-white dark:bg-gray-900 border-t border-gray-200/50 dark:border-gray-700/50">
+      {/* Enhanced Footer with Dark Theme */}
+      <footer className="py-12 bg-gray-900 dark:bg-black border-t border-white/10">
         <div className="container mx-auto px-4 text-center scroll-animate opacity-0 transform translate-y-8 transition-all duration-1000">
-          <p className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-medium text-lg">
+          <p className="text-white font-medium text-lg drop-shadow-lg">
             © 2025 Shatakshi Gupta. Built with React, TypeScript & Tailwind CSS.
           </p>
           <div className="mt-4 flex justify-center space-x-6">
-            <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
-            <div className="w-2 h-2 bg-purple-600 rounded-full animate-pulse delay-300"></div>
-            <div className="w-2 h-2 bg-pink-600 rounded-full animate-pulse delay-700"></div>
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-300"></div>
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-700"></div>
           </div>
         </div>
       </footer>
