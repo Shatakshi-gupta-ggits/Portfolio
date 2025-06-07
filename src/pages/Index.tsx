@@ -107,8 +107,8 @@ const Index = () => {
         <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
-      {/* Enhanced Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-700/50 shadow-xl">
+      {/* Enhanced Navigation with better dark mode */}
+      <nav className="fixed top-0 w-full z-50 bg-white/90 dark:bg-gray-900/95 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-700/50 shadow-xl transition-all duration-300">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-20">
             {/* Enhanced Logo */}
@@ -203,13 +203,17 @@ const Index = () => {
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
               </Button>
-              <Button variant="outline" size="lg" className="border-2 border-blue-600/30 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:border-blue-600/50 transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg backdrop-blur-sm">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-2 border-blue-600/30 text-gray-900 dark:text-white hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:border-blue-600/50 hover:text-blue-600 dark:hover:text-blue-400 transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg backdrop-blur-sm"
+              >
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Let's Connect
               </Button>
             </div>
 
-            {/* Stats */}
+            {/* Stats with improved dark mode visibility */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
               {[
                 { number: "3+", label: "Years Experience" },
@@ -220,7 +224,7 @@ const Index = () => {
                   <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">{stat.label}</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300 mt-1 font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
