@@ -65,7 +65,7 @@ const Index = () => {
 
   // Function to handle resume download
   const handleResumeDownload = () => {
-    window.open('https://drive.google.com/file/d/1ys2FMfqnwlyX8WesXEv_J41noVyF7nvs/view?usp=sharing', '_blank');
+    window.open('https://drive.google.com/file/d/1gNYgDDyi0gtVxo_nGniglXYI2frzC6R_/view?usp=sharing', '_blank');
   };
 
   const skills = {
@@ -82,7 +82,7 @@ const Index = () => {
       description: "AI-based system configuration tool with intelligent automation",
       tech: ["Groq", "ScreenPipe", "AI", "Automation"],
       category: "AI Agent",
-      github: "#",
+      github: "https://github.com/Praveendwivedi/AI-Assistant-Frontend",
       demo: "#",
       featured: true
     },
@@ -91,16 +91,16 @@ const Index = () => {
       description: "Real-time sign language translator with TTS/STT capabilities",
       tech: ["React", "AI/ML", "TTS", "STT"],
       category: "Full-Stack",
-      github: "#",
+      github: "https://github.com/Shatakshi-gupta-ggits/ISL",
       demo: "#",
       featured: true
     },
     {
       title: "Medicine Delivery Platform",
       description: "Oracle Apex-based platform with AI-powered routing system",
-      tech: ["Oracle Apex", "AI", "Low-Code"],
+      tech: ["Oracle Apex","SQL", "AI", "Low-Code"],
       category: "Oracle Apex",
-      github: "#",
+      github: "https://gd2594fd5374920-apexdb1.adb.ap-mumbai-1.oraclecloudapps.com/ords/r/demo/sales-report/home?session=11322910828193",
       demo: "#",
       featured: true
     }
