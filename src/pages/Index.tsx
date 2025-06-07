@@ -143,75 +143,74 @@ const Index = () => {
       {/* Enhanced Modern Navigation with Scroll Effects */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-700 transform ${
         scrollY > 50 
-          ? 'bg-white/80 dark:bg-gray-900/90 backdrop-blur-xl shadow-2xl border-b border-gray-200/30 dark:border-gray-700/30 translate-y-0' 
-          : 'bg-white/60 dark:bg-gray-900/70 backdrop-blur-lg translate-y-0'
+          ? 'bg-white/90 dark:bg-gray-900/95 backdrop-blur-xl shadow-lg border-b border-gray-200/20 dark:border-gray-700/20' 
+          : 'bg-white/70 dark:bg-gray-900/80 backdrop-blur-lg'
       }`}>
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-center h-20">
-            {/* Enhanced Modern Logo with Scroll Animation */}
+          <div className="flex justify-between items-center h-16">
+            {/* Refined Logo */}
             <div className="flex items-center group cursor-pointer">
               <div className="relative">
-                <div className="absolute -inset-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-50 transition-all duration-700 animate-pulse"></div>
-                <div className="relative bg-white/90 dark:bg-gray-900/90 rounded-2xl px-8 py-4 border border-gray-200/40 dark:border-gray-700/40 backdrop-blur-lg shadow-lg">
-                  <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500">
+                <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl blur-lg opacity-20 group-hover:opacity-30 transition-all duration-500"></div>
+                <div className="relative bg-white/95 dark:bg-gray-900/95 rounded-xl px-5 py-2.5 border border-gray-200/30 dark:border-gray-700/30 backdrop-blur-lg shadow-md">
+                  <h1 className="text-lg font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
                     Shatakshi Gupta
                   </h1>
                 </div>
               </div>
             </div>
 
-            {/* Enhanced Modern Desktop Navigation with Hover Effects */}
-            <div className="hidden md:flex items-center space-x-2">
+            {/* Refined Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-1">
               {navItems.map((item, index) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="relative group px-6 py-3 text-sm font-medium text-gray-700 dark:text-gray-200 transition-all duration-500 rounded-xl overflow-hidden"
-                  style={{ animationDelay: `${index * 150}ms` }}
+                  className="relative group px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 transition-all duration-300 rounded-lg"
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-purple-600/80 opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-xl scale-95 group-hover:scale-100"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-70 transition-all duration-500 rounded-xl"></div>
-                  <span className="relative z-10 group-hover:text-white transition-colors duration-300">{item.label}</span>
-                  <div className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-4/5 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-500 rounded-full"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg"></div>
+                  <span className="relative z-10 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">{item.label}</span>
+                  <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-3/4 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300 rounded-full"></div>
                 </a>
               ))}
             </div>
 
-            {/* Enhanced Modern Controls with Scroll Effects */}
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-4 bg-gray-100/70 dark:bg-gray-800/70 rounded-2xl px-6 py-4 backdrop-blur-xl border border-gray-200/40 dark:border-gray-700/40 shadow-xl hover:shadow-2xl transition-all duration-500">
-                <span className="text-2xl">🌙</span>
+            {/* Refined Controls */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 bg-gray-100/60 dark:bg-gray-800/60 rounded-xl px-4 py-2.5 backdrop-blur-lg border border-gray-200/30 dark:border-gray-700/30 shadow-md">
+                <span className="text-lg">🌙</span>
                 <Switch 
                   checked={darkMode} 
                   onCheckedChange={setDarkMode}
-                  className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-600 data-[state=checked]:to-purple-600 scale-110"
+                  className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-600 data-[state=checked]:to-purple-600"
                 />
-                <span className="text-2xl">☀️</span>
+                <span className="text-lg">☀️</span>
               </div>
 
               <button
-                className="md:hidden p-4 rounded-2xl bg-gradient-to-r from-blue-600/10 to-purple-600/10 hover:from-blue-600/20 hover:to-purple-600/20 transition-all duration-500 backdrop-blur-lg border border-gray-200/40 dark:border-gray-700/40 shadow-lg hover:shadow-xl hover:scale-110"
+                className="md:hidden p-3 rounded-xl bg-gradient-to-r from-blue-600/10 to-purple-600/10 hover:from-blue-600/20 hover:to-purple-600/20 transition-all duration-300 backdrop-blur-lg border border-gray-200/30 dark:border-gray-700/30 shadow-md"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? 
-                  <X className="h-6 w-6 text-gray-700 dark:text-gray-300" /> : 
-                  <Menu className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+                  <X className="h-5 w-5 text-gray-700 dark:text-gray-300" /> : 
+                  <Menu className="h-5 w-5 text-gray-700 dark:text-gray-300" />
                 }
               </button>
             </div>
           </div>
 
-          {/* Enhanced Mobile Navigation with Slide Animation */}
+          {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <div className="md:hidden border-t border-gray-200/30 dark:border-gray-700/30 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl animate-slide-in-right">
+            <div className="md:hidden border-t border-gray-200/20 dark:border-gray-700/20 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl animate-slide-in-right">
               <div className="px-4 pt-4 pb-6 space-y-2">
                 {navItems.map((item, index) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="block px-6 py-4 text-gray-700 dark:text-gray-200 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:text-blue-600 dark:hover:text-blue-400 rounded-2xl transition-all duration-500 font-medium border border-transparent hover:border-blue-600/20 hover:shadow-lg hover:scale-105"
+                    className="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-purple-600/10 hover:text-blue-600 dark:hover:text-blue-400 rounded-xl transition-all duration-300 font-medium border border-transparent hover:border-blue-600/20"
                     onClick={() => setMobileMenuOpen(false)}
-                    style={{ animationDelay: `${index * 100}ms` }}
+                    style={{ animationDelay: `${index * 50}ms` }}
                   >
                     {item.label}
                   </a>
@@ -229,18 +228,17 @@ const Index = () => {
             className="scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000"
             style={{ transform: `translateY(${scrollY * -0.1}px)` }}
           >
-            {/* Enhanced Modern Floating Badge with Advanced Animation */}
-            <div className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-emerald-500/5 via-blue-500/5 to-purple-500/5 rounded-full backdrop-blur-2xl border border-emerald-500/20 mb-16 shadow-2xl hover:shadow-emerald-500/20 transition-all duration-700 group cursor-pointer hover:scale-105">
+            {/* Enhanced Floating Badge with Better Balance */}
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-full backdrop-blur-xl border border-emerald-500/20 mb-12 shadow-lg hover:shadow-emerald-500/20 transition-all duration-500 group cursor-pointer hover:scale-105">
               <div className="relative">
-                <div className="w-4 h-4 bg-emerald-500 rounded-full animate-pulse"></div>
-                <div className="absolute inset-0 w-4 h-4 bg-emerald-500 rounded-full animate-ping opacity-60"></div>
+                <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 w-3 h-3 bg-emerald-500 rounded-full animate-ping opacity-60"></div>
               </div>
-              <Sparkles className="h-6 w-6 text-emerald-500 group-hover:rotate-45 transition-transform duration-700" />
-              <span className="text-lg font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <Sparkles className="h-4 w-4 text-emerald-500 group-hover:rotate-12 transition-transform duration-500" />
+              <span className="text-sm font-semibold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Available for opportunities
               </span>
-              <Heart className="h-5 w-5 text-pink-500 group-hover:scale-125 transition-transform duration-500" />
-              <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse delay-700"></div>
+              <Heart className="h-4 w-4 text-pink-500 group-hover:scale-110 transition-transform duration-300" />
             </div>
 
             <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
@@ -281,7 +279,7 @@ const Index = () => {
                   <div className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-125 transition-transform duration-500">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-gray-700 dark:text-gray-200 mt-2 font-medium">{stat.label}</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300 mt-2 font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
