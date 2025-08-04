@@ -65,7 +65,7 @@ const Index = () => {
 
   // Function to handle resume download
   const handleResumeDownload = () => {
-    window.open('https://drive.google.com/file/d/1gNYgDDyi0gtVxo_nGniglXYI2frzC6R_/view?usp=sharing', '_blank');
+    window.open('https://drive.google.com/file/d/1iVrK25ARZhV0WsA_7ZnauX3UxP-pqc_D/view?usp=sharing', '_blank');
   };
 
   const skills = {
@@ -114,9 +114,68 @@ const Index = () => {
   ];
 
   const certifications = [
-    "Alibaba Cloud Certified Developer (Sept 2024)",
-    "Oracle Academy: Database Design",
-    "Cisco Cybersecurity & Network Essentials"
+    {
+      title: "Alibaba Cloud Certified Developer",
+      issuer: "Alibaba Cloud",
+      date: "Sept 2024",
+      icon: "☁️",
+      color: "from-orange-500 to-red-500"
+    },
+    {
+      title: "Database Design",
+      issuer: "Oracle Academy",
+      date: "2024",
+      icon: "🗄️",
+      color: "from-red-600 to-orange-600"
+    },
+    {
+      title: "Linux & Cybersecurity Networking Essentials",
+      issuer: "Cisco Net Acad",
+      date: "2024",
+      icon: "🔒",
+      color: "from-blue-600 to-cyan-600"
+    },
+    {
+      title: "30+ Salesforce Trailhead Badges/Superbadges",
+      issuer: "Salesforce Trailhead",
+      date: "2024",
+      icon: "⚡",
+      color: "from-blue-500 to-indigo-600"
+    },
+    {
+      title: "Blockchain Fundamentals",
+      issuer: "Chainlink Labs",
+      date: "2024",
+      icon: "⛓️",
+      color: "from-purple-600 to-pink-600"
+    }
+  ];
+
+  const awards = [
+    {
+      title: "Top 3 in Hackhazards Hackathon",
+      subtitle: "ScreenPipe Track",
+      date: "05/2025",
+      icon: "🏆",
+      color: "from-yellow-400 to-orange-500",
+      description: "Secured 3rd position in national-level hackathon with innovative AI solution"
+    },
+    {
+      title: "Top 3 Winner in Oracle Low Code Development Contest",
+      subtitle: "Oracle",
+      date: "04/2025",
+      icon: "🥉",
+      color: "from-orange-500 to-red-500",
+      description: "Recognized for excellence in low-code application development"
+    },
+    {
+      title: "Sign Sarthi – Indian Sign Language Translator",
+      subtitle: "Copyright Office, Govt. of India",
+      date: "03/2025",
+      icon: "🏅",
+      color: "from-green-500 to-blue-500",
+      description: "Official copyright recognition for innovative accessibility solution"
+    }
   ];
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -129,7 +188,6 @@ const Index = () => {
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
-    { label: "Experience", href: "#experience" },
     { label: "Contact", href: "#contact" }
   ];
 
@@ -234,6 +292,43 @@ const Index = () => {
 
       {/* Enhanced Hero Section with Parallax Effects */}
       <section id="home" className="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-white via-blue-50/20 to-purple-50/20 dark:from-gray-900 dark:via-gray-800 dark:to-black">
+        {/* Small Code Box - Left Corner - GitHub Style */}
+        <div className="absolute top-24 left-6 z-20 scroll-animate opacity-0 transform translate-x-[-20px] transition-all duration-1000">
+          <div className="relative bg-[#0d1117] border border-[#30363d] rounded-lg shadow-2xl hover:scale-105 transition-all duration-300 max-w-sm">
+            {/* Glow effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-pink-500/50 rounded-lg blur opacity-75 animate-pulse"></div>
+            <div className="relative bg-[#0d1117] border border-[#30363d] rounded-lg">
+            {/* GitHub-style header */}
+            <div className="flex items-center justify-between px-3 py-2 border-b border-[#30363d] bg-[#161b22]">
+              <div className="flex items-center gap-2">
+                <div className="flex gap-1">
+                  <div className="w-2 h-2 bg-[#ff5f56] rounded-full"></div>
+                  <div className="w-2 h-2 bg-[#ffbd2e] rounded-full"></div>
+                  <div className="w-2 h-2 bg-[#27ca3f] rounded-full"></div>
+                </div>
+                <span className="text-xs text-[#7d8590] ml-2">developer.js</span>
+              </div>
+            </div>
+            
+            {/* Code content */}
+            <div className="p-3">
+              <pre className="text-xs font-mono leading-relaxed">
+                <span className="text-[#ff7b72]">const</span> <span className="text-[#79c0ff]">developer</span> <span className="text-[#ff7b72]">=</span> <span className="text-[#ffa657]">{'{'}</span>
+                {'\n'}  <span className="text-[#79c0ff]">name</span><span className="text-[#ff7b72]">:</span> <span className="text-[#a5d6ff]">'Shatakshi Gupta'</span><span className="text-[#ffa657]">,</span>
+                {'\n'}  <span className="text-[#79c0ff]">skills</span><span className="text-[#ff7b72]">:</span> <span className="text-[#ffa657]">[</span><span className="text-[#a5d6ff]">'React'</span><span className="text-[#ffa657]">,</span> <span className="text-[#a5d6ff]">'Java'</span><span className="text-[#ffa657]">,</span> <span className="text-[#a5d6ff]">'Spring Boot'</span><span className="text-[#ffa657]">,</span> <span className="text-[#a5d6ff]">'AI/ML'</span><span className="text-[#ffa657]">],</span>
+                {'\n'}  <span className="text-[#79c0ff]">experience</span><span className="text-[#ff7b72]">:</span> <span className="text-[#79c0ff]">1</span> <span className="text-[#ff7b72]">+</span> <span className="text-[#a5d6ff]">'years'</span><span className="text-[#ffa657]">,</span>
+                {'\n'}  <span className="text-[#79c0ff]">traits</span><span className="text-[#ff7b72]">:</span> <span className="text-[#ffa657]">[</span><span className="text-[#a5d6ff]">'Full-Stack Developer'</span><span className="text-[#ffa657]">,</span> <span className="text-[#a5d6ff]">'quickLearner'</span><span className="text-[#ffa657]">],</span>
+                {'\n'}  <span className="text-[#79c0ff]">hireable</span><span className="text-[#ff7b72]">:</span> <span className="text-[#ff7b72]">function</span><span className="text-[#ffa657]">()</span> <span className="text-[#ffa657]">{'{'}</span>
+                {'\n'}    <span className="text-[#ff7b72]">return</span> <span className="text-[#79c0ff]">true</span><span className="text-[#ffa657]">;</span>
+                {'\n'}  <span className="text-[#ffa657]">{'}'}</span><span className="text-[#ffa657]">,</span>
+                {'\n'}  <span className="text-[#79c0ff]">currentStatus</span><span className="text-[#ff7b72]">:</span> <span className="text-[#a5d6ff]">'Building awesome things 🚀'</span>
+                {'\n'}<span className="text-[#ffa657]">{'}'}</span>
+              </pre>
+            </div>
+            </div>
+          </div>
+        </div>
+
         <div className="container mx-auto px-4 text-center relative z-10">
           <div 
             className="scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000"
@@ -298,22 +393,22 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced About Section with Premium Background */}
+      {/* Enhanced About Me - Certifications & Awards Section with Premium Background */}
       <section id="about" className="py-24 relative overflow-hidden">
-        {/* Enhanced Background for About Section */}
+        {/* Enhanced Background for Certifications & Awards */}
         <div className="absolute inset-0">
           {/* Primary gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900" />
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900" />
           
           {/* Animated gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-blue-600/20 to-indigo-600/20 animate-gradient" />
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/20 via-teal-600/20 to-cyan-600/20 animate-gradient" />
           
           {/* Floating orbs for visual interest */}
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-3xl animate-pulse" 
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 rounded-full blur-3xl animate-pulse"
                style={{ transform: `translateY(${scrollY * 0.08}px)` }} />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-full blur-3xl animate-pulse delay-1000" 
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-teal-500/30 to-cyan-500/30 rounded-full blur-3xl animate-pulse delay-1000"
                style={{ transform: `translateY(${scrollY * -0.06}px)` }} />
-          <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-gradient-to-r from-indigo-500/30 to-purple-500/30 rounded-full blur-3xl animate-pulse delay-2000" 
+          <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-gradient-to-r from-cyan-500/30 to-emerald-500/30 rounded-full blur-3xl animate-pulse delay-2000"
                style={{ transform: `translateY(${scrollY * 0.1}px)` }} />
           
           {/* Subtle grid pattern overlay */}
@@ -323,78 +418,122 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
             <h2 className="text-5xl font-bold mb-6 text-white drop-shadow-2xl">About Me</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-white to-purple-300 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
+            <div className="w-32 h-1.5 bg-gradient-to-r from-white to-emerald-300 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
+            <p className="text-xl text-emerald-100 mt-6 max-w-2xl mx-auto leading-relaxed">
+              Recognition of excellence in technology and innovation
+            </p>
           </div>
-          
-          <div className="max-w-6xl mx-auto">
-            {/* Main About Card with Enhanced Premium Styling */}
-            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/15 dark:bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl hover:scale-105 transform mb-12 scroll-animate opacity-0 translate-y-8">
-              <CardContent className="p-12">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                  <div>
-                    <div className="flex items-center gap-4 mb-8">
-                      <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                        <User className="h-10 w-10 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-white drop-shadow-lg">Who I Am</h3>
-                        <p className="text-purple-200">Passionate Full-Stack Developer</p>
-                      </div>
-                    </div>
-                    <p className="text-lg leading-relaxed text-blue-100 mb-6">
-                      I'm currently pursuing B.Tech in Computer Science & Design at Gyan Ganga Institute of Technology & Sciences with a <span className="font-bold text-purple-300">GPA of 8.33</span>. 
-                      I specialize in building scalable web applications, AI-powered tools, and enterprise solutions using modern technologies.
-                    </p>
-                    <p className="text-lg leading-relaxed text-blue-100">
-                      With <span className="font-bold text-purple-300"> 1+ year of Freelance experience</span> and multiple hackathon wins, I love turning complex problems into elegant digital solutions.
-                    </p>
+
+          {/* Brief About Section */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/15 dark:bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl scroll-animate opacity-0 translate-y-8">
+              <CardContent className="p-8 text-center">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                    <User className="h-8 w-8 text-white" />
                   </div>
-                  
-                  <div className="space-y-6">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center p-6 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/20">
-                        <div className="text-3xl font-bold text-white drop-shadow-lg">200+</div>
-                        <div className="text-sm text-purple-200">Problems Solved</div>
-                      </div>
-                      <div className="text-center p-6 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/20">
-                        <div className="text-3xl font-bold text-white drop-shadow-lg">20+</div>
-                        <div className="text-sm text-purple-200">Projects Built</div>
-                      </div>
-                      <div className="text-center p-6 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/20">
-                        <div className="text-3xl font-bold text-white drop-shadow-lg">5</div>
-                        <div className="text-sm text-purple-200">Hackathon Wins</div>
-                      </div>
-                      <div className="text-center p-6 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/20">
-                        <div className="text-3xl font-bold text-white drop-shadow-lg">10+</div>
-                        <div className="text-sm text-purple-200">Certifications</div>
-                      </div>
-                    </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white drop-shadow-lg">Shatakshi Gupta</h3>
+                    <p className="text-emerald-200">Full-Stack Developer & Innovation Enthusiast</p>
                   </div>
                 </div>
+                <p className="text-lg leading-relaxed text-emerald-100 mb-4">
+                  Currently pursuing B.Tech in Computer Science & Design at Gyan Ganga Institute of Technology & Sciences with a <span className="font-bold text-white">GPA of 8.33</span>.
+                  Passionate about building scalable web applications and solving real-world problems through technology.
+                </p>
+                <p className="text-lg leading-relaxed text-emerald-100">
+                  With <span className="font-bold text-white">1+ year of Freelance experience</span> and multiple hackathon wins, I specialize in Full-Stack Development, AI/ML integration, and Low-Code solutions.
+                </p>
               </CardContent>
             </Card>
+          </div>
 
-            {/* Special Features Grid with Enhanced Premium Styling */}
+          {/* Awards Section */}
+          <div className="mb-20">
+            <h3 className="text-3xl font-bold text-center mb-12 text-white drop-shadow-lg">🏆 Awards & Recognition</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                { icon: Sparkles, title: "AI Integration Expert", desc: "Specialized in building AI-powered applications with intelligent automation, real-time processing, and machine learning integration.", gradient: "from-blue-600 to-purple-600" },
-                { icon: Code, title: "Full-Stack Mastery", desc: "End-to-end development expertise from React frontends to Spring Boot backends, with cloud deployment and database optimization.", gradient: "from-green-600 to-blue-600" },
-                { icon: BookOpen, title: "Low-Code Innovation", desc: "Oracle Apex specialist delivering enterprise solutions rapidly with advanced low-code development and custom integrations.", gradient: "from-purple-600 to-pink-600" },
-                { icon: Trophy, title: "Competitive Programmer", desc: "Strong algorithmic thinking with 200+ problems solved on LeetCode and GeeksforGeeks, excelling in data structures and algorithms.", gradient: "from-orange-600 to-red-600" },
-                { icon: Star, title: "Innovation Leader", desc: "Award-winning developer with multiple hackathon victories, creating solutions that bridge technology gaps and solve real-world problems.", gradient: "from-teal-600 to-green-600" },
-                { icon: Award, title: "Certified Professional", desc: "Multiple industry certifications including Alibaba Cloud, Oracle, Cisco, and 8+ Salesforce Trailhead badges demonstrating commitment to excellence.", gradient: "from-indigo-600 to-purple-600" }
-              ].map((item, index) => (
-                <Card key={index} className="hover:shadow-2xl transition-all duration-700 hover:-translate-y-6 group bg-white/15 dark:bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden relative scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: `${index * 150}ms` }}>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-700`} />
+              {awards.map((award, index) => (
+                <Card key={index} className="hover:shadow-2xl transition-all duration-700 hover:-translate-y-8 group bg-white/15 dark:bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden relative scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: `${index * 200}ms` }}>
+                  {/* Glow effect */}
+                  <div className={`absolute -inset-1 bg-gradient-to-r ${award.color} rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-700`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${award.color} opacity-0 group-hover:opacity-10 transition-opacity duration-700`} />
+                  
                   <CardContent className="p-8 relative z-10">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                      <item.icon className="h-8 w-8 text-white" />
+                    <div className="text-center">
+                      <div className="text-6xl mb-6 group-hover:scale-125 transition-transform duration-500 animate-bounce">
+                        {award.icon}
+                      </div>
+                      <div className={`inline-block px-4 py-2 bg-gradient-to-r ${award.color} text-white rounded-full text-sm font-bold mb-4 shadow-lg`}>
+                        {award.date}
+                      </div>
+                      <h4 className="text-xl font-bold mb-3 text-white drop-shadow-lg leading-tight">
+                        {award.title}
+                      </h4>
+                      <p className="text-emerald-200 font-medium mb-3">
+                        {award.subtitle}
+                      </p>
+                      <p className="text-sm text-emerald-100 leading-relaxed">
+                        {award.description}
+                      </p>
                     </div>
-                    <h3 className={`text-xl font-bold mb-4 text-white drop-shadow-lg ${item.gradient} bg-clip-text text-transparent`}>{item.title}</h3>
-                    <p className="text-blue-100 leading-relaxed">{item.desc}</p>
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          </div>
+
+          {/* Certifications Section */}
+          <div>
+            <h3 className="text-3xl font-bold text-center mb-12 text-white drop-shadow-lg">📜 Professional Certifications</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {certifications.map((cert, index) => (
+                <Card key={index} className="hover:shadow-2xl transition-all duration-700 hover:-translate-y-6 group bg-white/15 dark:bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden relative scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: `${index * 150}ms` }}>
+                  {/* Glow effect */}
+                  <div className={`absolute -inset-1 bg-gradient-to-r ${cert.color} rounded-lg blur opacity-20 group-hover:opacity-40 transition-opacity duration-700`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-10 transition-opacity duration-700`} />
+                  
+                  <CardContent className="p-8 relative z-10">
+                    <div className="text-center">
+                      <div className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${cert.color} rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-125 transition-transform duration-500`}>
+                        <span className="text-3xl">{cert.icon}</span>
+                      </div>
+                      <div className={`inline-block px-3 py-1 bg-gradient-to-r ${cert.color} text-white rounded-full text-xs font-bold mb-4 shadow-lg`}>
+                        {cert.date}
+                      </div>
+                      <h4 className="text-lg font-bold mb-2 text-white drop-shadow-lg leading-tight">
+                        {cert.title}
+                      </h4>
+                      <p className="text-emerald-200 font-medium text-sm">
+                        {cert.issuer}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Stats Section */}
+          <div className="mt-20 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="text-center group scroll-animate opacity-0 transform translate-y-8 transition-all duration-700">
+                <div className="text-6xl font-bold text-white drop-shadow-2xl group-hover:scale-125 transition-transform duration-500 mb-4">
+                  5+
+                </div>
+                <div className="text-xl text-emerald-200 font-medium">Professional Certifications</div>
+              </div>
+              <div className="text-center group scroll-animate opacity-0 transform translate-y-8 transition-all duration-700" style={{ transitionDelay: '200ms' }}>
+                <div className="text-6xl font-bold text-white drop-shadow-2xl group-hover:scale-125 transition-transform duration-500 mb-4">
+                  3
+                </div>
+                <div className="text-xl text-emerald-200 font-medium">Major Awards Won</div>
+              </div>
+              <div className="text-center group scroll-animate opacity-0 transform translate-y-8 transition-all duration-700" style={{ transitionDelay: '400ms' }}>
+                <div className="text-6xl font-bold text-white drop-shadow-2xl group-hover:scale-125 transition-transform duration-500 mb-4">
+                  30+
+                </div>
+                <div className="text-xl text-emerald-200 font-medium">Salesforce Badges</div>
+              </div>
             </div>
           </div>
         </div>
@@ -429,6 +568,142 @@ const Index = () => {
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Skills</h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
           </div>
+          
+          {/* Moving Skills Marquee */}
+          <div className="mb-16">
+            <div className="relative overflow-hidden">
+              {/* First row - Left to Right */}
+              <div className="flex animate-marquee whitespace-nowrap mb-8" style={{ width: 'max-content' }}>
+                <div className="flex items-center space-x-8 mx-4">
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">⚛️</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">React</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">☕</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Java</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🔷</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">TypeScript</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🍃</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Spring Boot</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🤖</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">AI/ML</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🎨</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Tailwind</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">📜</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">JavaScript</span>
+                  </div>
+                </div>
+                {/* Duplicate for seamless loop */}
+                <div className="flex items-center space-x-8 mx-4">
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">⚛️</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">React</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">☕</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Java</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🔷</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">TypeScript</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🍃</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Spring Boot</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🤖</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">AI/ML</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🎨</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Tailwind</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">📜</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">JavaScript</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Second row - Right to Left */}
+              <div className="flex animate-marquee-reverse whitespace-nowrap" style={{ width: 'max-content' }}>
+                <div className="flex items-center space-x-8 mx-4">
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🐳</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Docker</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">☁️</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">AWS</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🍃</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">MongoDB</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🐘</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">PostgreSQL</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🎨</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Figma</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🌿</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Git</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🔴</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Oracle</span>
+                  </div>
+                </div>
+                {/* Duplicate for seamless loop */}
+                <div className="flex items-center space-x-8 mx-4">
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🐳</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Docker</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">☁️</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">AWS</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🍃</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">MongoDB</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🐘</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">PostgreSQL</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🎨</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Figma</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🌿</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Git</span>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-white/10 dark:bg-gray-800/50 px-6 py-3 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="text-2xl">🔴</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">Oracle</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Object.entries(skills).map(([category, skillList], index) => (
               <Card key={category} className="hover:shadow-2xl transition-all duration-700 hover:-translate-y-6 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden relative scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: `${index * 150}ms` }}>
@@ -573,56 +848,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Enhanced Experience Section with Scroll Animation */}
-      <section id="experience" className="py-24 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Experience</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
-          </div>
-          <div className="max-w-4xl mx-auto">
-            <Card className="hover:shadow-2xl transition-all duration-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl hover:scale-105 transform scroll-animate opacity-0 translate-y-8">
-              <CardContent className="p-12">
-                <div className="flex flex-col lg:flex-row items-center gap-8">
-                  <div className="w-24 h-24 bg-gradient-to-br from-green-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                    <Briefcase className="h-12 w-12 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Freelance Full-Stack Developer</h3>
-                    <p className="text-sm bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 font-medium">Jan 2025 - Feb 2025</p>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                      Architected platform using Java/React, integrated Stripe API, deployed on AWS with MySQL database. 
-                      Delivered scalable solutions with modern tech stack.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Enhanced Certifications Section with Scroll Animation */}
-      <section className="py-24 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20 scroll-animate opacity-0 transform translate-y-12 transition-all duration-1000">
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Certifications</h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full heading-underline opacity-0 scale-x-0 origin-center transition-all duration-1000 ease-out" />
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {certifications.map((cert, index) => (
-              <Card key={index} className="hover:shadow-2xl transition-all duration-700 hover:-translate-y-6 group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl scroll-animate opacity-0 translate-y-8" style={{ transitionDelay: `${index * 150}ms` }}>
-                <CardContent className="p-8 text-center">
-                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-125 transition-transform duration-500">
-                    <Award className="h-8 w-8 text-white" />
-                  </div>
-                  <p className="font-medium text-gray-700 dark:text-gray-300 leading-relaxed">{cert}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Enhanced Contact Section with Premium Background */}
       <section id="contact" className="py-24 relative overflow-hidden">

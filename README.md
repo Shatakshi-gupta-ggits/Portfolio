@@ -10,10 +10,6 @@ This project showcases my skills, projects, and experience as a developer and de
 
 To run this project locally, follow these steps:
 
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v16 or higher recommended)
-- [npm](https://www.npmjs.com/) (comes with Node.js)
 
 ### Installation
 
@@ -48,17 +44,3 @@ You can deploy this site using any static hosting provider (e.g., Vercel, Netlif
 ```sh
 npm run build
 ```
-
-Then, follow your hosting provider's instructions to deploy the contents of the `dist` folder.
-
-## Custom Domain
-
-To use a custom domain, configure your DNS settings with your hosting provider and point it to your deployed site.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-Feel free to explore, contribute, or reach out for collaboration!
